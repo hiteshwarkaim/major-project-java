@@ -9,6 +9,7 @@ import com.bookstore.dao.DB_Connection;
 import com.bookstore.dao.UserDao;
 import com.bookstore.entities.User;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -55,4 +56,11 @@ public class UserService {
             }
                 
     } 
+    
+    public List<User> getAllUsersData(){
+        List<User> allUsers = userDao.getAllUsers();
+        
+        return  allUsers;
+    }
+    
 }

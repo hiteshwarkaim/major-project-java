@@ -22,12 +22,10 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-          
+          //contact service to create the new user
             UserService service=new UserService();
             service.create(request, response);
-            
-    
-            
+          
         }
     }
 }

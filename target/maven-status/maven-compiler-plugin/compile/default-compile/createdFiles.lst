@@ -1,0 +1,7 @@
+com\bookstore\dao\UserDao.class
+com\bookstore\dao\DB_Connection.class
+com\bookstore\admin\RegisterServlet.class
+NewServlet.class
+com\bookstore\service\UserService.class
+com\bookstore\entities\User.class
+com\bookstore\frontend\HomeServlet.class

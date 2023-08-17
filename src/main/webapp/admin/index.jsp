@@ -10,7 +10,8 @@
     <body>
         <div align="center">
             <%@include file="/components/header.jsp" %>
-            <h1>hello</h1>
+            <h1>title</h1>
+            
             <%@include file="/components/footer.jsp" %>
 
         </div>

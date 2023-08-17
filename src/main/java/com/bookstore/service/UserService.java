@@ -33,9 +33,11 @@ public class UserService {
             String email=request.getParameter("email");
             String password=request.getParameter("password");
             
+            
+            //contact to dao for insert data
             User newUser=new User(name,email,password);
             int status = userDao.createUser(newUser);
-            System.out.println(status);
+           
             if(status !=0 ){
                 System.out.println("inserted data");
                 String message="User is created successfully"+newUser.getName();

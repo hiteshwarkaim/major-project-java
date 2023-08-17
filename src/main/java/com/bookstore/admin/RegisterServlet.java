@@ -25,7 +25,6 @@ public class RegisterServlet extends HttpServlet {
           //contact service to create the new user
             UserService service=new UserService();
             service.create(request, response);
-          
         }
     }
 }

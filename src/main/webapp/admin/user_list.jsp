@@ -30,14 +30,11 @@
                         
                     </tr>
                 </thead>
-                <%
-                    List<User> users=(ArrayList<User>) session.getAttribute("allUsersSession");
-                %>
                 <tbody>
                     
                     <c:forEach var="u" items="${allUsersSession}" varStatus="status">
                         <tr>
-                            <td>${status.index}</td>
+                            <td>${status.index+1}</td>
                             <td>${u.id}</td>
                             <td>${u.name}</td>
                             <td>${u.email}</td>

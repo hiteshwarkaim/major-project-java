@@ -37,12 +37,12 @@ public class UserService {
             String email=request.getParameter("email");
             String password=request.getParameter("password");
             
-            //fetch all the user with this email
-            List<User> allUsers = userDao.findUserByEmail(email);
+        //fetch  the user with this email
+            User userByEmail = userDao.getUserByEmail(email);
             
             
             //check email is already exist or not
-            if(allUsers.size()>0){
+            if(userByEmail!=null){
                 System.out.println("exist krti hai ye");
                 String message="email already exist"+email;
                 request.getSession().setAttribute("message", message);
@@ -105,20 +105,36 @@ public class UserService {
             String email=request.getParameter("email");
             String password=request.getParameter("password");
             
-            User user=new User(id,name,email,password);
-             int updateUserDetails = userDao.updateUserDetails(user);
+            User userById = userDao.getUserById(id);
+            User userByEmail = userDao.getUserByEmail(email);
              
-            if(updateUserDetails!=0)
+            if(userByEmail!=null && userByEmail.getId()!=userById.getId())
             {
-                System.out.println("user updated");
-                String message="user updated successfully";
+                System.out.println("could not update");
+                String message="could not update";
                 request.setAttribute("message", message);
+                
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/components/message.jsp");
                 requestDispatcher.forward(request, response);
-            }
                 
-            else
-                System.out.println("error on update");
+            }
+            else{
+                User user=new User(id,name,email,password);
+                int updateUserDetails = userDao.updateUserDetails(user);
+
+                if(updateUserDetails!=0)
+                {
+                    System.out.println("user updated");
+                    String message="user updated successfully";
+                    request.setAttribute("message", message);
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/components/message.jsp");
+                    requestDispatcher.forward(request, response);
+                }
+
+                else
+                    System.out.println("error on update");
+                }
+            
     }
     
 }

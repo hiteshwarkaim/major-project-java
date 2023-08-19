@@ -74,9 +74,8 @@ public class UserDao {
         return usersList;
     }
     
-    public List<User> findUserByEmail(String email){
+    public User getUserByEmail(String email){
         User user=null;
-        List<User> usersList=new ArrayList<>();
         try {
             query="select * from users where email=?";
             ps=this.con.prepareStatement(query);
@@ -89,13 +88,12 @@ public class UserDao {
                 user.setName(rs.getString("full_name"));
                 user.setEmail(rs.getString("email"));
                 
-                usersList.add(user);
             }
            
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return  usersList;
+        return  user;
     }
     
         public User getUserById(int id){

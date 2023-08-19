@@ -41,7 +41,7 @@ public class UserService {
             List<User> allUsers = userDao.findUserByEmail(email);
             
             
-            //check if user is already exist or not
+            //check email is already exist or not
             if(allUsers.size()>0){
                 System.out.println("exist krti hai ye");
                 String message="email already exist"+email;
@@ -81,16 +81,32 @@ public class UserService {
         return  allUsers;
     } 
     
+    
+    
     public void editUser(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
         
         int id = Integer.parseInt(request.getParameter("id"));
+        
         User updateUser = userDao.getUserById(id);
-       
+//        userDao.findUserByEmail(email)
+        
         request.setAttribute("user", updateUser);
         
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("register.jsp");
         requestDispatcher.forward(request, response);
             
     }
+
+//    public void updateUser(HttpServletRequest request, HttpServletResponse response) {
+//            
+//        int id = Integer.parseInt(request.getParameter("id"));
+//            
+//            String name=request.getParameter("name");
+//            String email=request.getParameter("email");
+//            String password=request.getParameter("password");
+//            
+//            System.out.println(name+" "+email+" "+password);
+//            
+//    }
     
 }

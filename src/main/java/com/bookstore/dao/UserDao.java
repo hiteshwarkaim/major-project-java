@@ -98,4 +98,27 @@ public class UserDao {
         return  usersList;
     }
     
+        public User getUserById(int id){
+            User user=new User();
+            try {
+                query="select * from users where user_id=?";
+                ps=this.con.prepareStatement(query);
+                ps.setInt(1,id);
+                rs=ps.executeQuery();
+                while(rs.next())
+                {
+                    user.setName(rs.getString("full_name"));
+                    user.setEmail(rs.getString("email"));
+                    user.setPassword(rs.getString("password"));
+                    
+                    return user;
+                }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return user;
+        }
+
+   
 }

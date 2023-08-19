@@ -28,7 +28,7 @@ public class ListUserServlet extends HttpServlet {
             UserService service=new UserService();
             List<User> allUsersData = service.getAllUsersData();
             
-            request.getSession().setAttribute("allUsersSession", allUsersData);
+            request.setAttribute("allUsersSession", allUsersData);
             
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(("user_list.jsp"));
             requestDispatcher.forward(request, response);

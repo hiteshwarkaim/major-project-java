@@ -32,13 +32,13 @@
                 </thead>
                 <tbody>
                     
-                    <c:forEach var="u" items="${allUsersSession}" varStatus="status">
+                    <c:forEach var="user" items="${allUsersSession}" varStatus="status">
                         <tr>
                             <td>${status.index+1}</td>
-                            <td>${u.id}</td>
-                            <td>${u.name}</td>
-                            <td>${u.email}</td>
-                            <td> <a href="">Edit</a> &nbsp;&nbsp; <a href="">Remove</a></td>
+                            <td>${user.id}</td>
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td> <a href="edit-user?id=${user.id}">Edit</a> &nbsp;&nbsp; <a href="">Remove</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>

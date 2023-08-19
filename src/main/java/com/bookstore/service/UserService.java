@@ -51,7 +51,7 @@ public class UserService {
             }
             else{
                 
-                //if user is not already exist, then insert the data
+                //if email is not already exist, then insert the data
                 newUser=new User(name,email,password);
                 status = userDao.createUser(newUser);
                 
@@ -79,10 +79,18 @@ public class UserService {
         List<User> allUsers = userDao.getAllUsers();
         
         return  allUsers;
+    } 
+    
+    public void editUser(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        User updateUser = userDao.getUserById(id);
+       
+        request.setAttribute("user", updateUser);
+        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("register.jsp");
+        requestDispatcher.forward(request, response);
+            
     }
-    
-    
-    
-    
     
 }

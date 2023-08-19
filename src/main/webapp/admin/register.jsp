@@ -10,11 +10,11 @@
     <body>
         <div align="center">
             <%@include file="/components/header.jsp" %>
-            
+          
             <form action="create-user" method="POST">
-                Name:<input type="text" name="name"/><br>
-                Email:<input type="email" name="email"/><br>
-                Password:<input type="password" name="password"/><br>
+                Name:<input type="text" name="name" value="${user.name}"/><br>
+                Email:<input type="email" name="email" value="${user.email}"/><br>
+                Password:<input type="password" name="password" value="${user.password}"/><br>
                 <input type="submit" value="signin"/>
                 
             </form>

@@ -111,7 +111,7 @@ public class UserService {
             if(userByEmail!=null && userByEmail.getId()!=userById.getId())
             {
                 System.out.println("could not update");
-                String message="could not update";
+                String message="could not update "+email+" already exist";
                 request.setAttribute("message", message);
                 
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/components/message.jsp");

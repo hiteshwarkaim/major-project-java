@@ -59,7 +59,7 @@ public class UserService {
                     if(status !=0 ){
                         System.out.println("inserted data");
                         String message="User is created successfully"+newUser.getName();
-                        request.getSession().setAttribute("currentuser", message);
+                        request.setAttribute("message", message);
                         RequestDispatcher rd=request.getRequestDispatcher("/components/message.jsp");
                         rd.forward(request, response);
                     }
@@ -97,16 +97,28 @@ public class UserService {
             
     }
 
-//    public void updateUser(HttpServletRequest request, HttpServletResponse response) {
-//            
-//        int id = Integer.parseInt(request.getParameter("id"));
-//            
-//            String name=request.getParameter("name");
-//            String email=request.getParameter("email");
-//            String password=request.getParameter("password");
-//            
-//            System.out.println(name+" "+email+" "+password);
-//            
-//    }
+    public void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+            
+            int id = Integer.parseInt(request.getParameter("id"));
+            
+            String name=request.getParameter("name");
+            String email=request.getParameter("email");
+            String password=request.getParameter("password");
+            
+            User user=new User(id,name,email,password);
+             int updateUserDetails = userDao.updateUserDetails(user);
+             
+            if(updateUserDetails!=0)
+            {
+                System.out.println("user updated");
+                String message="user updated successfully";
+                request.setAttribute("message", message);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/components/message.jsp");
+                requestDispatcher.forward(request, response);
+            }
+                
+            else
+                System.out.println("error on update");
+    }
     
 }

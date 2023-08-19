@@ -5,6 +5,7 @@
  */
 package com.bookstore.admin;
 
+import com.bookstore.service.UserService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,14 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "UpdateUserServlet", urlPatterns = {"/admin/update-user"})
 public class UpdateUserServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
      
-//            UserService service=new UserService();
-//            service.updateUser(request,response);
-//           
+            UserService service=new UserService();
+            service.updateUser(request,response);
+           
         }
     }
 }

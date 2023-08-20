@@ -1,4 +1,5 @@
 com\bookstore\dao\UserDao.class
+com\bookstore\admin\DeleteUserServlet.class
 com\bookstore\admin\EditUserServlet.class
 com\bookstore\dao\DB_Connection.class
 com\bookstore\admin\RegisterServlet.class

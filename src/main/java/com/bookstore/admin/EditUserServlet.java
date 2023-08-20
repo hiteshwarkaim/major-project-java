@@ -24,9 +24,12 @@ public class EditUserServlet extends HttpServlet {
             
             
             
-            UserService service=new UserService();
-            service.editUser(request,response);
-            
+            UserService service=new UserService(request,response);
+            try {
+                service.editUser();
+            service.getAllUsersData();
+            } catch (Exception e) {
+            }
             
         }
     }

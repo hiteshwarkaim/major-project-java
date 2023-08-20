@@ -10,6 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <script>
+            
+        </script>
     </head>
     <body>
         <div align="center">
@@ -17,9 +20,10 @@
             
             <div>
                  <h1>User management</h1>    
-                 <a href="">Create new user</a>
+                 <a href="register.jsp">Create new user</a>
             </div> 
-            <table border="1">
+            ${message}
+            <table border="1" width="800">
                 <thead>
                     <tr>
                         <th>Index</th>
@@ -32,13 +36,16 @@
                 </thead>
                 <tbody>
                     
-                    <c:forEach var="user" items="${allUsersSession}" varStatus="status">
+                    <c:forEach var="user" items="${allUsers}" varStatus="status">
                         <tr>
                             <td>${status.index+1}</td>
                             <td>${user.id}</td>
                             <td>${user.name}</td>
                             <td>${user.email}</td>
-                            <td> <a href="edit-user?id=${user.id}">Edit</a> &nbsp;&nbsp; <a href="">Remove</a></td>
+                            <td> 
+                                <a href="edit-user?id=${user.id}">Edit</a> &nbsp;&nbsp; 
+                                <a href="javascript:confirmDelete(${user.id})">Remove</a>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -47,5 +54,14 @@
             <%@include file="/components/footer.jsp" %>
 
         </div>
+
+            <script>
+                function confirmDelete(userId) {
+                    if(confirm("are sure to delete: "+userId+"?"))
+                    {
+                        window.location='delete-user?id=' + userId;
+                    }
+                }
+            </script>
     </body>
 </html>

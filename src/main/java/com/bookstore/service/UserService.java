@@ -22,13 +22,17 @@ import javax.servlet.http.HttpServletResponse;
 public class UserService {
 
     private UserDao userDao;
+    private HttpServletRequest request;
+    private HttpServletResponse response;
     
-    public UserService() {
+    public UserService(HttpServletRequest request,HttpServletResponse response) {
+        this.request=request;
+        this.response=response;
         userDao=new UserDao(DB_Connection.getConnection());
     }
     
     
-    public void create(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+    public void create() throws ServletException,IOException{
         
             int status=0;
             User newUser=null;
@@ -44,10 +48,12 @@ public class UserService {
             //check email is already exist or not
             if(userByEmail!=null){
                 System.out.println("exist krti hai ye");
+                
                 String message="email already exist"+email;
-                request.getSession().setAttribute("message", message);
-                RequestDispatcher rd=request.getRequestDispatcher("/error/error.jsp");
-                rd.forward(request, response);
+                request.setAttribute("message", message);
+                
+                RequestDispatcher rd=request.getRequestDispatcher("message.jsp");
+                rd.include(request, response);
             }
             else{
                 
@@ -55,35 +61,46 @@ public class UserService {
                 newUser=new User(name,email,password);
                 status = userDao.createUser(newUser);
                 
-                
                     if(status !=0 ){
                         System.out.println("inserted data");
                         String message="User is created successfully"+newUser.getName();
                         request.setAttribute("message", message);
-                        RequestDispatcher rd=request.getRequestDispatcher("/components/message.jsp");
-                        rd.forward(request, response);
+                        RequestDispatcher rd=request.getRequestDispatcher("message.jsp");
+                        rd.include(request, response);
+                        
+                        
                     }
                     else
                     {
                         System.out.println("error");
                         String message="error aa gai";
-                        request.getSession().setAttribute("message", message);
+                        request.setAttribute("message", message);
                         RequestDispatcher rd=request.getRequestDispatcher("/error/error.jsp");
-                        rd.forward(request, response);
+                        rd.include(request, response);
                     }
             }
-                
+             
     } 
     
-    public List<User> getAllUsersData(){
+    
+//    public void getAllUsersData() throws IOException,ServletException{{
+//        getAllUsersData(null);
+//    }
+//    
+    public void getAllUsersData() throws IOException,ServletException{
         List<User> allUsers = userDao.getAllUsers();
-        
-        return  allUsers;
+        request.setAttribute("allUsers", allUsers);
+//        if(message!=null)
+//            request.setAttribute("message", message);
+                    
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("user_list.jsp");
+        requestDispatcher.forward(request, response);
+//        return allUsers;
     } 
     
     
     
-    public void editUser(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+    public void editUser() throws ServletException,IOException{
         
         int id = Integer.parseInt(request.getParameter("id"));
         
@@ -97,7 +114,7 @@ public class UserService {
             
     }
 
-    public void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+    public void updateUser() throws ServletException,IOException{
             
             int id = Integer.parseInt(request.getParameter("id"));
             
@@ -114,8 +131,8 @@ public class UserService {
                 String message="could not update "+email+" already exist";
                 request.setAttribute("message", message);
                 
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/components/message.jsp");
-                requestDispatcher.forward(request, response);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+                requestDispatcher.include(request, response);
                 
             }
             else{
@@ -127,14 +144,30 @@ public class UserService {
                     System.out.println("user updated");
                     String message="user updated successfully";
                     request.setAttribute("message", message);
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/components/message.jsp");
-                    requestDispatcher.forward(request, response);
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+                    requestDispatcher.include(request, response);
                 }
 
                 else
                     System.out.println("error on update");
                 }
             
+            
+    }
+
+    public void removeUser() throws IOException,ServletException{
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        int deleteUser = userDao.deleteUser(id);
+        if(deleteUser!=0)
+        {
+            String message="user deleted successfully";
+            request.setAttribute("message", message);
+            
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+            requestDispatcher.include(request, response);
+            
+        }
     }
     
 }

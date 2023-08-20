@@ -22,7 +22,7 @@
              
                     <div>
                         <c:if test="${user!=null}">
-                            <form action="update-user" method="POST">
+                            <form action="update-user" method="POST" >
                              <input type="hidden" name="id" value="${user.id}">
                         </c:if>
                         <c:if test="${user==null}">
@@ -31,15 +31,18 @@
                                 
                    
                     
-                        Name:<input type="text" name="name" value="${user.name}"/><br>
-                        Email:<input type="email" name="email" value="${user.email}"/><br>
-                        Password:<input type="password" name="password" value="${user.password}"/><br>
-                        <input type="submit" value="signin"/>
+                            Name:<input type="text" name="name" value="${user.name}"/><br>
+                            Email:<input type="email" name="email" value="${user.email}"/><br>
+                            Password:<input type="password" name="password" value="${user.password}"/><br>
+                            <input type="submit" value="signin"/>
 
                     </form>
             </div>
             <%@include file="/components/footer.jsp" %>
 
         </div>
+            
     </body>
 </html>
+
+

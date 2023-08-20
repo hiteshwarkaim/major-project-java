@@ -22,8 +22,9 @@ public class UpdateUserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
      
-            UserService service=new UserService();
-            service.updateUser(request,response);
+            UserService service=new UserService(request,response);
+            service.updateUser();
+            service.getAllUsersData();
            
         }
     }

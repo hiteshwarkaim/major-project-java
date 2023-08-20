@@ -23,8 +23,15 @@ public class RegisterServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
           //contact service to create the new user
-            UserService service=new UserService();
-            service.create(request, response);
+            UserService service=new UserService(request,response);
+            try {
+                
+                service.create();
+//            service.getAllUsersData("user created successfully !!!!");
+               service.getAllUsersData();
+
+            } catch (Exception e) {
+            }
         }
     }
 }

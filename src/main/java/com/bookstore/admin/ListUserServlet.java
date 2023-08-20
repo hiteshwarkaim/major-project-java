@@ -5,12 +5,9 @@
  */
 package com.bookstore.admin;
 
-import com.bookstore.entities.User;
 import com.bookstore.service.UserService;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,13 +22,12 @@ public class ListUserServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            UserService service=new UserService();
-            List<User> allUsersData = service.getAllUsersData();
+            UserService service=new UserService(request,response);
+            service.getAllUsersData();
             
-            request.setAttribute("allUsersSession", allUsersData);
+//            request.setAttribute("allUsersSession", allUsersData);
             
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(("user_list.jsp"));
-            requestDispatcher.forward(request, response);
+            
             
         }
     }

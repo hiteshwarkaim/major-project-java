@@ -139,4 +139,18 @@ public class UserDao {
             }
             return status;
         }
+         
+         
+         public int deleteUser(int id){
+             int status=0;
+             try {
+                 query="delete from users where user_id=?";
+                ps=this.con.prepareStatement(query);
+                ps.setInt(1, id);
+                status = ps.executeUpdate();
+                
+             } catch (Exception e) {
+             }
+             return  status;
+         }
 }

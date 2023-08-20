@@ -38,11 +38,11 @@
                     <c:forEach var="cat" items="${allCategory}" varStatus="status">
                         <tr>
                             <td>${status.index+1}</td>
-                            <td>${cat.id}</td>
+                            <td>${cat.cat_id}</td>
                             <td>${cat.name}</td>
                             <td> 
-                                <a href="edit-user?id=${cat.id}">Edit</a> &nbsp;&nbsp; 
-                                <a href="javascript:confirmDelete(${cat.id})">Remove</a>
+                                <a href="edit-category?id=${cat.cat_id}">Edit</a> &nbsp;&nbsp; 
+                                <a href="javascript:confirmDelete(${cat.cat_id})">Remove</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -54,10 +54,10 @@
         </div>
 
             <script>
-                function confirmDelete(userId) {
-                    if(confirm("are sure to delete: "+userId+"?"))
+                function confirmDelete(catId) {
+                    if(confirm("are sure to delete: "+catId+"?"))
                     {
-                        window.location='delete-user?id=' + userId;
+                        window.location='delete-category?id=' + catId;
                     }
                 }
             </script>

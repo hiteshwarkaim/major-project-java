@@ -12,17 +12,18 @@ import java.io.Serializable;
  * @author Admin
  */
 public class Category implements Serializable{
-    private int id;
+    private int cat_id;
     private String name;
 
-    public int getId() {
-        return id;
+    public int getCat_id() {
+        return cat_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCat_id(int cat_id) {
+        this.cat_id = cat_id;
     }
 
+    
     public String getName() {
         return name;
     }
@@ -31,8 +32,8 @@ public class Category implements Serializable{
         this.name = name;
     }
 
-    public Category(int id, String name) {
-        this.id = id;
+    public Category(int cat_id, String name) {
+        this.cat_id = cat_id;
         this.name = name;
     }
 
@@ -42,6 +43,11 @@ public class Category implements Serializable{
 
     
     public Category() {
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" + "cat_id=" + cat_id + ", name=" + name + '}';
     }
     
     

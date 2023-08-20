@@ -6,7 +6,6 @@
 package com.bookstore.dao;
 
 import com.bookstore.entities.Category;
-import com.bookstore.entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,7 +56,7 @@ public class CategoryDao {
             while(rs.next()){
                  Category cat=new Category();
                  
-                 cat.setId(rs.getInt("category_id"));
+                 cat.setCat_id(rs.getInt("category_id"));
                  cat.setName(rs.getString("category_name"));
                  
                  categoryList.add(cat);
@@ -79,7 +78,7 @@ public class CategoryDao {
             
              while(rs.next()){
                 category=new Category();
-                category.setId(rs.getInt("category_id"));
+                category.setCat_id(rs.getInt("category_id"));
                 category.setName(rs.getString("category_name"));
                
             }
@@ -90,41 +89,38 @@ public class CategoryDao {
         return  category;
     }
     
-        public User getUserById(int id){
-            User user=new User();
+        public Category getCategoryById(int id){
+            Category cat=new Category();
             try {
-                query="select * from users where user_id=?";
+                query="select * from category where category_id=?";
                 ps=this.con.prepareStatement(query);
                 ps.setInt(1,id);
                 rs=ps.executeQuery();
                 while(rs.next())
                 {
-                    user.setId(rs.getInt("user_id"));
-                    user.setName(rs.getString("full_name"));
-                    user.setEmail(rs.getString("email"));
-                    user.setPassword(rs.getString("password"));
-                    
-                    return user;
+                    cat.setCat_id(rs.getInt("category_id"));
+                    cat.setName(rs.getString("category_name"));
+
+                    return cat;
                 }
                 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return user;
+            return cat;
         }
 
    
         
-         public int updateUserDetails(User u){
+         public int updateCategoryDetails(Category cat){
+             System.out.println(cat);
             int status=0;
             try {
-                query="update users set full_name=?, email=?, password=? where user_id=?";
+                query="update category set category_name=? where category_id=?";
                 ps=this.con.prepareStatement(query);
                 
-                ps.setString(1, u.getName());
-                ps.setString(2, u.getEmail());
-                ps.setString(3, u.getPassword());
-                ps.setInt(4,u.getId());
+                ps.setString(1, cat.getName());
+                ps.setInt(2,cat.getCat_id());
                 status=ps.executeUpdate();
                 
                 
@@ -135,10 +131,10 @@ public class CategoryDao {
         }
          
          
-         public int deleteUser(int id){
+         public int deleteCategory(int id){
              int status=0;
              try {
-                 query="delete from users where user_id=?";
+                 query="delete from category where category_id=?";
                 ps=this.con.prepareStatement(query);
                 ps.setInt(1, id);
                 status = ps.executeUpdate();

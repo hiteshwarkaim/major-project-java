@@ -99,76 +99,76 @@ public class CategoryService {
  
     
 //    
-//    public void editUser() throws ServletException,IOException{
-//        
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        
-//        User updateUser = userDao.getUserById(id);
-////        userDao.findUserByEmail(email)
-//        
-//        request.setAttribute("user", updateUser);
-//        
-//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("register.jsp");
-//        requestDispatcher.forward(request, response);
-//            
-//    }
+    public void editCategory() throws ServletException,IOException{
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        Category getCategoryById = categoryDao.getCategoryById(id);
+//        userDao.findUserByEmail(email)
+        System.out.println(getCategoryById+" getCategoryById");
+        request.setAttribute("category", getCategoryById);
+        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("category_form.jsp");
+        requestDispatcher.forward(request, response);
+            
+    }
 //
-//    public void updateUser() throws ServletException,IOException{
-//            
-//            int id = Integer.parseInt(request.getParameter("id"));
-//            
-//            String name=request.getParameter("name");
-//            String email=request.getParameter("email");
-//            String password=request.getParameter("password");
-//            
-//            User userById = userDao.getUserById(id);
-//            User userByEmail = userDao.getUserByEmail(email);
-//             
-//            if(userByEmail!=null && userByEmail.getId()!=userById.getId())
-//            {
-//                System.out.println("could not update");
-//                String message="could not update "+email+" already exist";
-//                request.setAttribute("message", message);
-//                
-//                RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
-//                requestDispatcher.include(request, response);
-//                
-//            }
-//            else{
-//                User user=new User(id,name,email,password);
-//                int updateUserDetails = userDao.updateUserDetails(user);
+    public void updateCategory() throws ServletException,IOException{
+            
+            int id = Integer.parseInt(request.getParameter("id"));
+            
+            String name=request.getParameter("name");
+            
+            System.out.println(name);
+        Category categoryById = categoryDao.getCategoryById(id);
+        Category categoryByName = categoryDao.getCategoryByName(name);
+            
+        if(categoryByName!=null && categoryByName.getCat_id()!=categoryById.getCat_id())
+            {
+                System.out.println("could not update");
+                String message="could not update "+name+" already exist";
+                request.setAttribute("message", message);
+                
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+                requestDispatcher.include(request, response);
+                
+            }
+            else{
+                Category category=new Category(id,name);
+                int updateCategoryDetails = categoryDao.updateCategoryDetails(category);
+
+                if(updateCategoryDetails!=0)
+                {
+                    System.out.println("category updated");
+                    String message="category updated successfully";
+                    request.setAttribute("message", message);
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+                    requestDispatcher.include(request, response);
+                }
+
+                else
+                    System.out.println("error on update");
+                }
+            
+            
+    }
 //
-//                if(updateUserDetails!=0)
-//                {
-//                    System.out.println("user updated");
-//                    String message="user updated successfully";
-//                    request.setAttribute("message", message);
-//                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
-//                    requestDispatcher.include(request, response);
-//                }
-//
-//                else
-//                    System.out.println("error on update");
-//                }
-//            
-//            
-//    }
-//
-//    public void removeUser() throws IOException,ServletException{
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        
-//        int deleteUser = userDao.deleteUser(id);
-//        if(deleteUser!=0)
-//        {
-//            String message="user deleted successfully";
-//            request.setAttribute("message", message);
-//            
-//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
-//            requestDispatcher.include(request, response);
-//            
-//        }
-//    }
-//    
+    public void removeCategory() throws IOException,ServletException{
+        int id = Integer.parseInt(request.getParameter("id"));
+        int deleteCategory = categoryDao.deleteCategory(id);
+        
+        if(deleteCategory!=0)
+        {
+            String message="category deleted successfully";
+            request.setAttribute("message", message);
+            
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+            requestDispatcher.include(request, response);
+            
+        }
+    }
+    
+
     
  
    

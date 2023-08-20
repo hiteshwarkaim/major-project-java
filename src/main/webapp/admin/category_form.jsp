@@ -23,7 +23,7 @@
                     <div>
                         <c:if test="${category!=null}">
                             <form action="update-category" method="POST" >
-                             <input type="hidden" name="id" value="${category.id}">
+                             <input type="hidden" name="id" value="${category.cat_id}">
                         </c:if>
                         <c:if test="${category==null}">
                             <form action="create-category" method="POST">

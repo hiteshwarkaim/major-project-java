@@ -1,3 +1,4 @@
+com\bookstore\admin\EditCategoryServlet.class
 com\bookstore\admin\ListCategoryServlet.class
 com\bookstore\admin\RegisterServlet.class
 com\bookstore\admin\AdminHomeServlet.class
@@ -5,6 +6,7 @@ com\bookstore\admin\ListUserServlet.class
 com\bookstore\entities\User.class
 com\bookstore\admin\CreateCategoryServlet.class
 com\bookstore\entities\Category.class
+com\bookstore\admin\UpdateCategoryServlet.class
 com\bookstore\dao\CategoryDao.class
 com\bookstore\dao\UserDao.class
 com\bookstore\admin\DeleteUserServlet.class
@@ -12,5 +14,6 @@ com\bookstore\admin\EditUserServlet.class
 com\bookstore\dao\DB_Connection.class
 com\bookstore\admin\UpdateUserServlet.class
 com\bookstore\service\UserService.class
+com\bookstore\admin\DeleteCategoryServlet.class
 com\bookstore\frontend\HomeServlet.class
 com\bookstore\service\CategoryService.class

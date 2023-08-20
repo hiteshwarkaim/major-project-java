@@ -15,7 +15,7 @@
             <div>
                 <nav>
                     <a href="list-users">Users</a> |&nbsp;
-                    <a href="#">Categories</a> | &nbsp;
+                    <a href="list-category">Categories</a> | &nbsp;
                     <a href="#">Books</a> | &nbsp;
                     <a href="#">Customers</a> | &nbsp;
                     <a href="#">Orders</a> |&nbsp;

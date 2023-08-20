@@ -20,7 +20,7 @@
             
             <div>
                  <h1>Category management</h1>    
-                 <a href="register.jsp">Create new Category</a>
+                 <a href="category_form.jsp">Create new Category</a>
             </div> 
             ${message}
             <table border="1" width="800">

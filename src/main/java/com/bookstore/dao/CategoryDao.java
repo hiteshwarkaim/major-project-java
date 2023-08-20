@@ -28,16 +28,14 @@ public class CategoryDao {
         this.con=con;
     }
     
-    public int createUser(User user){
+    public int createCategory(Category cat){
          int status=0;
         try {
            
-            query="insert into users(full_name,email,password) values(?,?,?)";
+            query="insert into category(category_name) values(?)";
             ps=this.con.prepareStatement(query);
             
-            ps.setString(1, user.getName());
-            ps.setString(2, user.getEmail());
-            ps.setString(3, user.getPassword());
+            ps.setString(1, cat.getName());
             status = ps.executeUpdate();
             System.out.println(status);
              
@@ -71,26 +69,25 @@ public class CategoryDao {
         return categoryList;
     }
     
-    public User getUserByEmail(String email){
-        User user=null;
+    public Category getCategoryByName(String name){
+        Category category=null;
         try {
-            query="select * from users where email=?";
+            query="select * from category where category_name=?";
             ps=this.con.prepareStatement(query);
-            ps.setString(1, email);
+            ps.setString(1, name);
             rs = ps.executeQuery();
             
              while(rs.next()){
-                user=new User();
-                user.setId(rs.getInt("user_id"));
-                user.setName(rs.getString("full_name"));
-                user.setEmail(rs.getString("email"));
-                
+                category=new Category();
+                category.setId(rs.getInt("category_id"));
+                category.setName(rs.getString("category_name"));
+               
             }
            
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return  user;
+        return  category;
     }
     
         public User getUserById(int id){

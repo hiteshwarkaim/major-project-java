@@ -34,7 +34,9 @@
                             Name:<input type="text" name="name" value="${user.name}"/><br>
                             Email:<input type="email" name="email" value="${user.email}"/><br>
                             Password:<input type="password" name="password" value="${user.password}"/><br>
-                            <input type="submit" value="signin"/>
+                            <button type="submit" >Signin</button> &nbsp;&nbsp;
+                            <button onclick="javascript:history.go(-1)">Cancel</button>
+                            
 
                     </form>
             </div>

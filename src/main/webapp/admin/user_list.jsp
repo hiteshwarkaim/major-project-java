@@ -19,7 +19,7 @@
             <%@include file="/components/header.jsp" %>
             
             <div>
-                 <h1>User management</h1>    
+                 <h1 class="pageheading">User management</h1>    
                  <a href="register.jsp">Create new user</a>
             </div> 
             ${message}

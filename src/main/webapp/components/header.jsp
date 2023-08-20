@@ -13,14 +13,38 @@
             <div>
                 <img src="../static/images/logo.jpg" alt="alt" height="100" width="300"/>
             </div>
-            <div>
+            <div id="headermenu">
                 <nav>
-                    <a href="list-users">Users</a> |&nbsp;
-                    <a href="list-category">Categories</a> | &nbsp;
-                    <a href="#">Books</a> | &nbsp;
-                    <a href="#">Customers</a> | &nbsp;
-                    <a href="#">Orders</a> |&nbsp;
-                    <a href="#">Reviews</a>
+                    <div>
+                        <a href="list-users">
+                            <img src="../static/images/user.png" alt="alt" width="70" height="70"/><br>Users
+                        </a> |&nbsp;
+                    </div>
+                    <div>
+                        <a href="list-category">
+                            <img src="../static/images/category.png" alt="alt" width="70" height="70"/> <br>Categories
+                        </a> | &nbsp;
+                     </div>
+                    <div>
+                        <a href="#">
+                            <img src="../static/images/book.png" alt="alt" width="70" height="70"/> <br>Books
+                        </a> | &nbsp;
+                    </div>
+                    <div>
+                        <a href="#">
+                            <img src="../static/images/customer.png" alt="alt" width="70" height="70"/><br> Customers
+                        </a> | &nbsp;
+                     </div>
+                    <div>
+                        <a href="#">
+                            <img src="../static/images/order.png" alt="alt" width="70" height="70"/> <br>Orders
+                        </a> |&nbsp;
+                     </div>
+                    <div>
+                        <a href="#">
+                            <img src="../static/images/review.png" alt="alt" width="70" height="70"/><br> Reviews
+                        </a>
+                     </div>
                 </nav>
             </div>
             

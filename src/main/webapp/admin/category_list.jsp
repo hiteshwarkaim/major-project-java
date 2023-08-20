@@ -19,7 +19,7 @@
             <%@include file="/components/header.jsp" %>
             
             <div>
-                 <h1>Category management</h1>    
+                 <h1 class="pageheading">Category management</h1>    
                  <a href="category_form.jsp">Create new Category</a>
             </div> 
             ${message}

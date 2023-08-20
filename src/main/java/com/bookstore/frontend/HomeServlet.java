@@ -5,7 +5,11 @@
  */
 package com.bookstore.frontend;
 
+import com.bookstore.dao.CategoryDao;
+import com.bookstore.dao.DB_Connection;
+import com.bookstore.entities.Category;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +24,11 @@ public class HomeServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
      
+        CategoryDao categoryDao=new CategoryDao(DB_Connection.getConnection());
+        List<Category> allCategory = categoryDao.getAllCategory();
+        
+        request.setAttribute("allCategory", allCategory);
+        
         RequestDispatcher rd = request.getRequestDispatcher("frontend/index.jsp");
         rd.forward(request, response);
     }

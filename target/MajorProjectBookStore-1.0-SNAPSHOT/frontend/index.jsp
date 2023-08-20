@@ -9,7 +9,7 @@
     </head>
     <body>
         <div align="center">
-            <%@include file="/components/header.jsp" %>
+            <%@include file="/components/header_frontend.jsp" %>
             <h2>new arrival</h2>
             <h2>best selling</h2>
             <h2>top selling</h2>

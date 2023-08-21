@@ -13,7 +13,7 @@
             <div>
                 <img src="../static/images/logo.jpg" alt="alt" height="100" width="300"/>
             </div>
-            <h4>Welcome, <c:out value="${sessionScope.userEmail}"></c:out> | <a href="#">Logout</a></h4>
+            <h4>Welcome, <c:out value="${sessionScope.userEmail}"></c:out> | <a href="logout">Logout</a></h4>
             <div id="headermenu">
                 <nav>
                     <div>

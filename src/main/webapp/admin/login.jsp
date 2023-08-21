@@ -10,8 +10,9 @@
     </head>
     <body>
         <div align="center">
-            <%@include file="/components/header.jsp" %>
           
+            <h1>BookStore Admin</h1>
+            
             <c:if test="${message!=null}">
                 <h4 class="message">${message}</h4>
             </c:if>
@@ -26,8 +27,7 @@
                         <button type="submit" >Login</button> &nbsp;&nbsp;
                     </form>
                 </div>
-            <%@include file="/components/footer.jsp" %>
-
+            
         </div>
             
     </body>

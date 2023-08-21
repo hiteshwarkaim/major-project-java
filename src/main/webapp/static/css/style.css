@@ -42,3 +42,9 @@ th{
 button[type=submit]{
     font-weight: bolder;
 }
+
+.message{
+    color: red;
+    font-style: italic;
+    font-size: 15px;
+}

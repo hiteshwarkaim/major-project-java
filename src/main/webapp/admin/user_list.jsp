@@ -22,7 +22,10 @@
                  <h1 class="pageheading">User management</h1>    
                  <a href="register.jsp">Create new user</a>
             </div> 
-            ${message}
+            <c:if test="${message!=null}">
+                <h4 class="message">${message}</h4>
+            </c:if>
+            
             <table border="1" width="800">
                 <thead>
                     <tr>

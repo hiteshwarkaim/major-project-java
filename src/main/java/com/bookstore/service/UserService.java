@@ -177,11 +177,22 @@ public class UserService {
         boolean loginStatus = userDao.login(email,pass);
         
         if(loginStatus)
+        {
             System.out.println("user login success");
-        else
-            System.out.println("not login");
-        
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+            request.getSession().setAttribute("userEmail", email);
+            
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin/");
             requestDispatcher.include(request, response);
+            
+        }
+        else
+        {
+            System.out.println("not login");
+            String message="login failed";
+            request.setAttribute("message", message);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+            requestDispatcher.include(request, response);
+        }
+            
     }
 }

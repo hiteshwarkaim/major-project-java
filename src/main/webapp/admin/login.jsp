@@ -12,9 +12,13 @@
         <div align="center">
             <%@include file="/components/header.jsp" %>
           
+            <c:if test="${message!=null}">
+                <h4 class="message">${message}</h4>
+            </c:if>
             <div>
                 <h2>Admin Login</h2>
             </div>
+            
                 <div>
                     <form action="login" method="POST" >
                         Email:<input type="text" name="email"/><br>

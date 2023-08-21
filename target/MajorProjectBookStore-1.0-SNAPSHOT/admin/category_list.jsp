@@ -22,7 +22,9 @@
                  <h1 class="pageheading">Category management</h1>    
                  <a href="category_form.jsp">Create new Category</a>
             </div> 
-            ${message}
+            <c:if test="${message!=null}">
+                <h4>${message}</h4>
+            </c:if>
             <table border="1" width="800">
                 <thead>
                     <tr>

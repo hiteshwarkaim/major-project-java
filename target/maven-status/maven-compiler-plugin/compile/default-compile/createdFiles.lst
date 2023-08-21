@@ -8,10 +8,13 @@ com\bookstore\entities\Category.class
 com\bookstore\controller\admin\category\UpdateCategoryServlet.class
 com\bookstore\dao\CategoryDao.class
 com\bookstore\dao\UserDao.class
+com\bookstore\controller\admin\RegisterServlet.class
 com\bookstore\controller\admin\user\EditUserServlet.class
 com\bookstore\dao\DB_Connection.class
 com\bookstore\controller\admin\category\DeleteCategoryServlet.class
+com\bookstore\controller\admin\AdminHomeServlet.class
 com\bookstore\controller\admin\user\DeleteUserServlet.class
 com\bookstore\service\UserService.class
 com\bookstore\frontend\HomeServlet.class
 com\bookstore\service\CategoryService.class
+com\bookstore\controller\admin\LoginServlet.class

@@ -170,4 +170,18 @@ public class UserService {
         }
     }
     
+    public void userLogin() throws IOException,ServletException{
+        String email = request.getParameter("email");
+        String pass = request.getParameter("password");
+        
+        boolean loginStatus = userDao.login(email,pass);
+        
+        if(loginStatus)
+            System.out.println("user login success");
+        else
+            System.out.println("not login");
+        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+            requestDispatcher.include(request, response);
+    }
 }

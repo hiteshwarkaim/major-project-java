@@ -27,7 +27,7 @@
                         </a> | &nbsp;
                      </div>
                     <div>
-                        <a href="#">
+                        <a href="list-books">
                             <img src="../static/images/book.png" alt="alt" width="70" height="70"/> <br>Books
                         </a> | &nbsp;
                     </div>

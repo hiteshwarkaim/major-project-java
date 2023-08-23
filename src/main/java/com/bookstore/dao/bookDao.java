@@ -250,19 +250,19 @@ public class BookDao {
         }
 //         
 //         
-//         public int deleteUser(int id){
-//             int status=0;
-//             try {
-//                 query="delete from users where user_id=?";
-//                ps=this.con.prepareStatement(query);
-//                ps.setInt(1, id);
-//                status = ps.executeUpdate();
-//                
-//             } catch (Exception e) {
-//             }
-//             return  status;
-//         }
-//         
+         public int delete(int id){
+             int status=0;
+             try {
+                 query="delete from book where book_id=?";
+                ps=this.con.prepareStatement(query);
+                ps.setInt(1, id);
+                status = ps.executeUpdate();
+                
+             } catch (Exception e) {
+             }
+             return  status;
+         }
+         
 //         public boolean login(String email, String pass){
 //             User user=new User();
 //            try {

@@ -260,20 +260,20 @@ public class BookService {
             
     }
 ////
-//    public void removeCategory() throws IOException,ServletException{
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        int deleteCategory = categoryDao.deleteCategory(id);
-//        
-//        if(deleteCategory!=0)
-//        {
-//            String message="category deleted successfully";
-//            request.setAttribute("message", message);
-//            
-//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
-//            requestDispatcher.include(request, response);
-//            
-//        }
-//    }
+    public void deleteBook() throws IOException,ServletException{
+        int id = Integer.parseInt(request.getParameter("id"));
+        int deleteBook = bookDao.delete(id);
+        
+        if(deleteBook!=0)
+        {
+            String message="category deleted successfully";
+            request.setAttribute("message", message);
+            
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("book_list.jsp");
+            requestDispatcher.include(request, response);
+            
+        }
+    }
     
 
     

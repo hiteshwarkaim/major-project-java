@@ -6,6 +6,7 @@ C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\co
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\service\CategoryService.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\entities\Review.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\category\ListCategoryServlet.java
+C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\Book\DeleteBookServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\dao\CategoryDao.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\AdminHomeServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\entities\OrderDetail.java

@@ -47,7 +47,8 @@
                                 Description:<textarea name="desc">
                                     
                                             </textarea><br>
-                                Book Image:<input type="file" id="id" name="bookImage"/><br>
+                                            Book Image:<input type="file" id="bookImage" name="bookImage" />
+                                            <img alt="alt" id="thumbnail" style="width: 10%;"/> <br>
                                 
                                 
                             <input type="submit" value="Add Book"/>
@@ -61,6 +62,21 @@
             <script type="text/javascript">
                 $(document).ready(function(){
                     $('#publishDate').datepicker();
+                    $('#bookImage').change(function(){
+                        showImageThumbnail(this);
+                    });
+                    
+                    function showImageThumbnail(fileInput){
+                        var file=fileInput.files[0];
+                        
+                        var reader=new FileReader();
+                        
+                        reader.onload=function(e){
+                            $('#thumbnail').attr('src', e.target.result);
+                        };
+                        
+                        reader.readAsDataURL(file);
+                    }
                 });
         </script>
     </body>

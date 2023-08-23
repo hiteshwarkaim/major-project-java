@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.bookstore.entities.User"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="/components/common_style.jsp" %>
 
@@ -54,8 +55,8 @@
                             <td>${book.b_title}</td>
                             <td>${book.author}</td>
                             <td>${book.category.name}</td>
-                            <td>${book.price}</td>
-                            <td>${book.lastUpdateTime}</td>
+                            <td>Rs. ${book.price}</td>
+                            <td> <fmt:formatDate pattern="MM/dd/yyyy" value='${book.lastUpdateTime}'/></td>
                             <td> 
                                 <a href="edit-book?id=${book.b_id}">Edit</a> &nbsp;&nbsp; 
                                 <a href="javascript:confirmDelete(${book.b_id})">Remove</a>

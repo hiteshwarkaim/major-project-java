@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "CreateBookServlet", urlPatterns = {"/admin/create-book"})
 @MultipartConfig(
-        fileSizeThreshold = 1024*10,    //10kb
-        maxFileSize = 1024*300,         //300kb
-        maxRequestSize = 1024*1024         //1MB
+        fileSizeThreshold = 1024*1024*10,    //10kb
+        maxFileSize = 1024*1024*50,         //50mb
+        maxRequestSize = 1024*1024*100         //100MB
     )
 public class CreateBookServlet extends HttpServlet {
 
@@ -28,12 +28,10 @@ public class CreateBookServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            try {
-                   BookService service =new BookService(request,response);
-                   service.createBook();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            
+            BookService service =new BookService(request,response);
+            service.createBook();
+           
             
         }
     }

@@ -63,12 +63,23 @@ public class BookService {
     }   
     public void createBook() throws IOException,ServletException{
         System.out.println("book service start");
+        
         int catId = Integer.parseInt(request.getParameter("category"));
-        String title = request.getParameter("title");
-        String author = request.getParameter("author");
-        String desc = request.getParameter("desc");
-        String isbn = request.getParameter("isbn");
-        float price = Float.parseFloat(request.getParameter("price"));
+//            int catId=11; System.out.println(catId);
+        String title = request.getParameter("title");System.out.println("title"+title);
+        String author = request.getParameter("author");System.out.println("author"+author);
+        String desc = request.getParameter("desc");System.out.println("desc"+desc);
+        String isbn = request.getParameter("isbn");System.out.println("isbn"+isbn);
+        float price = Float.parseFloat(request.getParameter("price"));System.out.println("price"+price);
+        
+        
+        
+         System.out.println("catid"+catId);
+        System.out.println("title"+title);
+        System.out.println("author"+author);
+        System.out.println("desc"+desc);
+        System.out.println("isbn"+isbn);
+        System.out.println("price"+price);
         
         DateFormat dateFormat=new SimpleDateFormat("MM/dd/yyyy");
         Date publishdate=null;
@@ -78,6 +89,8 @@ public class BookService {
             e.printStackTrace();
         }
         
+       
+        System.out.println("publish date"+publishdate);
         
         Book newBook=new Book();
         newBook.setB_title(title);
@@ -92,7 +105,7 @@ public class BookService {
         newBook.setPrice(price);
         
         
-        Part part=request.getPart("bookImage");
+        Part part=request.getPart("bookimage");
         if(part!=null && part.getSize()>0){
             long size=part.getSize();
             byte[] imageBytes=new byte[(int)size];

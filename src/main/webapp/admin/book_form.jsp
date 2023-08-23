@@ -47,8 +47,8 @@
                                 Description:<textarea name="desc">
                                     
                                             </textarea><br>
-                                            Book Image:<input type="file" id="bookImage" name="bookImage" />
-                                            <img alt="alt" id="thumbnail" style="width: 10%;"/> <br>
+                                Book Image:<input type="file" id="bookImage" name="bookimage" />
+                                <img alt="alt" id="thumbnail" style="width: 10%;"/> <br>
                                 
                                 
                             <input type="submit" value="Add Book"/>

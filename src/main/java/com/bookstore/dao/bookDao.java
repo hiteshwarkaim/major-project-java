@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BookDao {
@@ -43,7 +44,7 @@ public class BookDao {
             ps.setBytes(5, book.getPic());
             ps.setFloat(6, book.getPrice());
             ps.setObject(7, book.getPublishDate());
-            ps.setObject(8, "2013-05-04 03:12:54");
+            ps.setObject(8, new Date());
             
             //fetch category name by categori id
             String query1="select * from category where category_name=?";

@@ -7,6 +7,11 @@ package com.bookstore.dao;
 
 import com.bookstore.entities.Book;
 import com.bookstore.entities.Category;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,25 +29,25 @@ public class BookDao {
         this.con=con;
     }
     
-//    public int createUser(User user){
-//         int status=0;
-//        try {
-//           
-//            query="insert into users(full_name,email,password) values(?,?,?)";
-//            ps=this.con.prepareStatement(query);
-//            
-//            ps.setString(1, user.getName());
-//            ps.setString(2, user.getEmail());
-//            ps.setString(3, user.getPassword());
-//            status = ps.executeUpdate();
-//            System.out.println(status);
-//             
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        
-//        return status;
-//    }
+    public int createBook(Book book){
+         int status=0;
+        try {
+           
+            query="insert into book(full_name,email,password) values(?,?,?)";
+            ps=this.con.prepareStatement(query);
+            
+            ps.setString(1, book.getAuthor());
+            ps.setString(2, book.getB_title());
+            ps.setString(3, book.getIsbn());
+            status = ps.executeUpdate();
+            System.out.println(status);
+             
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return status;
+    }
     
     public List<Book> getAllBooks(){
         List<Book> booksList=new ArrayList<>();
@@ -65,14 +70,20 @@ public class BookDao {
                  book.setIsbn(rs.getString("isbn"));
     
 //                 //fetch image
-//                 Blob b=rs.getBlob("image");
-//                 byte[] barr=b.getBytes(1, (int) b.length());
-////                 File file = new File("D:/xtra/");
-//                 OutputStream fos=new FileOutputStream("D://xtra");
-//                 fos.write(barr);
-//                 fos.flush();
-//                 fos.close();
-//                 book.setPic(barr);
+                try {
+                     Blob b=rs.getBlob("image");
+                    byte[] barr=b.getBytes(1, (int) b.length());
+                    File file = new File("D:/xtra/");
+//                    if(!file.canRead())
+//                    file.setReadable(true);
+                    OutputStream fos=new FileOutputStream(file);
+                    fos.write(barr);
+                    fos.flush();
+                    fos.close();
+                    book.setPic(barr);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
 //                 
                  
                  

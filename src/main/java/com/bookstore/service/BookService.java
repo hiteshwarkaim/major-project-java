@@ -6,8 +6,10 @@
 package com.bookstore.service;
 
 import com.bookstore.dao.BookDao;
+import com.bookstore.dao.CategoryDao;
 import com.bookstore.dao.DB_Connection;
 import com.bookstore.entities.Book;
+import com.bookstore.entities.Category;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BookService {
 
     private BookDao bookDao;
+    private CategoryDao categoryDao;
     private HttpServletRequest request;
     private HttpServletResponse response;
 
@@ -25,11 +28,13 @@ public class BookService {
         this.request = request;
         this.response = response;
         bookDao=new BookDao(DB_Connection.getConnection());
+       categoryDao=new CategoryDao(DB_Connection.getConnection());
+        
     }
     
     
     
-    public void listBooks() throws IOException,ServletException{
+     public void listBooks() throws IOException,ServletException{
         List<Book> allBooks = bookDao.getAllBooks();
         request.setAttribute("allBooks", allBooks);
         System.out.println(allBooks);
@@ -40,53 +45,17 @@ public class BookService {
     } 
     
 //    
-//    public void createCategory() throws ServletException,IOException{
-//        
-//            int status=0;
-//            Category newCategory=null;
-//            
-//            String name=request.getParameter("name");
-//            
-//        //fetch  the user with this email
-//            Category categoryByName = categoryDao.getCategoryByName(name);
-//            
-//            
-//            //check email is already exist or not
-//            if(categoryByName!=null){
-//                System.out.println("exist krti hai ye");
-//                
-//                String message="category name already exist"+name;
-//                request.setAttribute("message", message);
-//                
-//                RequestDispatcher rd=request.getRequestDispatcher("message.jsp");
-//                rd.include(request, response);
-//            }
-//            else{
-//                
-//                //if email is not already exist, then insert the data
-//                newCategory=new Category(name);
-//                status = categoryDao.createCategory(newCategory);
-//                
-//                    if(status !=0 ){
-//                        System.out.println("inserted data");
-//                        String message="category is created successfully"+newCategory.getName();
-//                        request.setAttribute("message", message);
-//                        RequestDispatcher rd=request.getRequestDispatcher("message.jsp");
-//                        rd.include(request, response);
-//                        
-//                        
-//                    }
-//                    else
-//                    {
-//                        System.out.println("error");
-//                        String message="error aa categor me gai";
-//                        request.setAttribute("message", message);
-//                        RequestDispatcher rd=request.getRequestDispatcher("/error/error.jsp");
-//                        rd.include(request, response);
-//                    }
-//            }
-//             
-//    } 
+    public void createBook() throws ServletException,IOException{
+        
+        List<Category> allCategory = categoryDao.getAllCategory();
+        request.setAttribute("allCategory", allCategory);
+        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("book_form.jsp");
+        requestDispatcher.forward(request, response);
+//      
+          System.out.println("create book");
+             
+    } 
 //    
 // 
 //    

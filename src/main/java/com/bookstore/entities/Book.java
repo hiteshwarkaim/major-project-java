@@ -22,6 +22,8 @@ public class Book implements Serializable{
     
     private Set<Review> reviews=new HashSet<>();
     private Set<OrderDetail> orderDetails=new HashSet<>();
+    
+    private String base64Image;
 
     public int getB_id() {
         return b_id;
@@ -137,8 +139,19 @@ public class Book implements Serializable{
     public Book() {
     }
     
+    
     public String getBase64Image(){
-        return  Base64.getEncoder().encodeToString(this.pic);
+        this.base64Image=Base64.getEncoder().encodeToString(this.pic);
+        return  this.base64Image;
     }
+    public void setBase64Image(String base64){
+        this.base64Image=base64;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" + "b_id=" + b_id + ", b_title=" + b_title + ", author=" + author + ", desc=" + desc + ", isbn=" + isbn + ", pic=" + pic + ", price=" + price + ", publishDate=" + publishDate + ", lastUpdateTime=" + lastUpdateTime + ", category=" + category + ", reviews=" + reviews + ", orderDetails=" + orderDetails + '}';
+    }
+    
     
 }

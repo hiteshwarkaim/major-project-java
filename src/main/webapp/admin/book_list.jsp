@@ -21,7 +21,7 @@
             
             <div>
                  <h1 class="pageheading">Book management</h1>    
-                 <a href="register.jsp">Create new book</a>
+                 <a href="new-book">Create new book</a>
             </div> 
             <c:if test="${message!=null}">
                 <h4 class="message">${message}</h4>
@@ -49,7 +49,7 @@
                             <td>${status.index+1}</td>
                             <td>${book.b_id}</td>
                             <td>
-                                <img src="data:image/jpg;base64,${book.base64Image}" alt="alt"/>
+                                <img src="data:image/jpg;base64,${book.base64Image}" alt="image" />
                             </td>
                             <td>${book.b_title}</td>
                             <td>${book.author}</td>

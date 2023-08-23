@@ -7,6 +7,7 @@ com\bookstore\dao\CategoryDao.class
 com\bookstore\dao\BookDao.class
 com\bookstore\controller\admin\AdminHomeServlet.class
 com\bookstore\service\UserService.class
+com\bookstore\controller\admin\Book\CreateBookServlet.class
 com\bookstore\entities\Review.class
 com\bookstore\controller\admin\category\ListCategoryServlet.class
 com\bookstore\controller\admin\user\UpdateUserServlet.class

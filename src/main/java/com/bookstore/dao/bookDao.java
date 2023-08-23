@@ -139,27 +139,31 @@ public class BookDao {
         return booksList;
     }
     
-//    public User getUserByEmail(String email){
-//        User user=null;
-//        try {
-//            query="select * from users where email=?";
-//            ps=this.con.prepareStatement(query);
-//            ps.setString(1, email);
-//            rs = ps.executeQuery();
-//            
-//             while(rs.next()){
-//                user=new User();
-//                user.setId(rs.getInt("user_id"));
-//                user.setName(rs.getString("full_name"));
-//                user.setEmail(rs.getString("email"));
-//                
-//            }
-//           
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return  user;
-//    }
+    public Book getBookBytitle(String title){
+        Book book=null;
+        try {
+            query="select * from book where title=?";
+            ps=this.con.prepareStatement(query);
+            ps.setString(1, title);
+            rs = ps.executeQuery();
+            
+             while(rs.next()){
+                book=new Book();
+                book.setB_id(rs.getInt("book_id"));
+                book.setB_title(rs.getString("title"));
+                book.setAuthor(rs.getString("author"));
+                book.setDesc(rs.getString("desc"));
+                book.setIsbn(rs.getString("isbn"));
+                book.setPic(rs.getBytes("image"));
+                book.setPublishDate(rs.getDate("publish_date"));
+                
+            }
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return  book;
+    }
 //    
         public Book getBookById(int id){
             Book book=new Book();

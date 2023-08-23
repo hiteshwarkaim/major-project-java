@@ -18,7 +18,7 @@
     <body>
         <div align="center">
             <%@include file="/components/header.jsp" %>
-            ${message}
+           
             <div>
                  <h1 class="pageheading">Book management</h1>    
                  <a href="new-book">Create new book</a>

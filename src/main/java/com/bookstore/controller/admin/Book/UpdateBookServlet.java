@@ -30,6 +30,7 @@ public class UpdateBookServlet extends HttpServlet {
             
             BookService service =new BookService(request,response);
             service.updateBook();
+            service.listBooks();
         }
     }
 }

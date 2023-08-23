@@ -24,6 +24,7 @@ public class EditBookServlet extends HttpServlet {
             
             BookService service =new BookService(request,response);
             service.editBook();
+            service.listBooks();
         }
     }
 }

@@ -152,6 +152,32 @@ public class Book implements Serializable{
     public String toString() {
         return "Book{" + "b_id=" + b_id + ", b_title=" + b_title + ", author=" + author + ", desc=" + desc + ", isbn=" + isbn + ", pic=" + pic + ", price=" + price + ", publishDate=" + publishDate + ", lastUpdateTime=" + lastUpdateTime + ", category=" + category + ", reviews=" + reviews + ", orderDetails=" + orderDetails + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.b_id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Book other = (Book) obj;
+        if (this.b_id != other.b_id) {
+            return false;
+        }
+        return true;
+    }
+
     
     
 }

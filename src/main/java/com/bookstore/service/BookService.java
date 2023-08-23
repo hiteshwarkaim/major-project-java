@@ -131,6 +131,7 @@ public class BookService {
         int id = Integer.parseInt(request.getParameter("id"));
         
         Book bookById = bookDao.getBookById(id);
+       
         List<Category> allCategory = categoryDao.getAllCategory();
 //        userDao.findUserByEmail(email)
 //        System.out.println(getCategoryById+" getCategoryById");
@@ -161,6 +162,19 @@ public class BookService {
                e.printStackTrace();
            }
 
+             Book existBook = bookDao.getBookById(id);
+            Book bookBytitle = bookDao.getBookBytitle(title);
+             
+            if(!existBook.equals(bookBytitle)){
+                String message="could not update becoz another book has this title";
+                
+                request.setAttribute("message", message);
+                
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("book_list.jsp");
+                requestDispatcher.include(request, response);
+                return;
+                
+            }
             System.out.println("id:"+id);
            
            System.out.println("title:"+title);

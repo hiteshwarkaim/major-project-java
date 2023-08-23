@@ -24,7 +24,7 @@
              
                     <div>
                         <c:if test="${book!=null}">
-                            <form action="update-boook" method="get" >
+                            <form action="update-book" method="post" enctype="multipart/form-data" >
                              <input type="hidden" name="id" value="${book.b_id}">
                         </c:if>
                         <c:if test="${book==null}">
@@ -34,9 +34,14 @@
                    
                                 Category:<select name="category">
                                             <c:forEach items="${allCategory}" var="category">
-                                                <option value="${category.cat_id}">
-                                                    ${category.name}
-                                                </option>
+                                                <c:if test="${category.cat_id eq book.category.cat_id}">
+                                                    <option value="${category.cat_id}" selected>
+                                                </c:if>
+                                                <c:if test="${category.cat_id ne book.category.cat_id}">
+                                                    <option value="${category.cat_id}">
+                                                </c:if>
+                                                    ${category.name}    
+                                                    </option>
                                             </c:forEach>
                                 </select><br>
                                 Title:<input type="text" name="title" value="${book.b_title}"/><br>
@@ -45,10 +50,10 @@
                                 Publish Date:<input type="text" id="publishDate" name="publishdate" value="${book.publishDate}"><br>
                                 Price:<input type="text" name="price" value="${book.price}"/><br>
                                 Description:<textarea name="desc">
-                                    
+                                                ${book.desc}
                                             </textarea><br>
                                 Book Image:<input type="file" id="bookImage" name="bookimage" />
-                                <img alt="alt" id="thumbnail" style="width: 10%;"/> <br>
+                                <img src="data:image/jpg;base64,${book.base64Image}" alt="alt" id="thumbnail" style="width: 10%;"/> <br>
                                 
                                 
                             <input type="submit" value="Add Book"/>

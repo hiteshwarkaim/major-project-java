@@ -161,35 +161,53 @@ public class BookDao {
 //        return  user;
 //    }
 //    
-//        public User getUserById(int id){
-//            User user=new User();
-//            try {
-//                query="select * from users where user_id=?";
-//                ps=this.con.prepareStatement(query);
-//                ps.setInt(1,id);
-//                rs=ps.executeQuery();
-//                while(rs.next())
-//                {
-//                    user.setId(rs.getInt("user_id"));
-//                    user.setName(rs.getString("full_name"));
-//                    user.setEmail(rs.getString("email"));
-//                    user.setPassword(rs.getString("password"));
-//                    
-//                    return user;
-//                }
-//                
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            return user;
-//        }
+        public Book getBookById(int id){
+            Book book=new Book();
+            try {
+                query="select * from book where book_id=?";
+                ps=this.con.prepareStatement(query);
+                ps.setInt(1,id);
+                rs=ps.executeQuery();
+                while(rs.next())
+                {
+                    book.setB_id(rs.getInt("book_id"));
+                    book.setB_title(rs.getString("title"));
+                    book.setAuthor(rs.getString("author"));
+                    book.setDesc(rs.getString("description"));
+                    book.setIsbn(rs.getString("isbn"));
+                    book.setPic(rs.getBytes("image"));
+                    book.setPrice(rs.getFloat("price"));
+                    book.setPublishDate(rs.getDate("publish_date"));
+                    book.setLastUpdateTime(rs.getDate("last_update_time"));
+                    
+                    String query1="select * from category where category_id=?";
+                    PreparedStatement ps2=this.con.prepareStatement(query1);
+                    ps2.setInt(1, rs.getInt("category_id"));
+                    ResultSet rs2=ps2.executeQuery();
+                    Category category=null;
+                    if(rs2.next())
+                    {
+                         category=new Category();
+                         category.setCat_id(rs2.getInt("category_id"));
+                         category.setName(rs2.getString("category_name"));
+                    }
+                    
+                    book.setCategory(category);
+                    return book;
+                }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return book;
+        }
 //
 //   
-//        
-//         public int updateUserDetails(User u){
+        
+//         public int updateBookDetails(Book book){
 //            int status=0;
 //            try {
-//                query="update users set full_name=?, email=?, password=? where user_id=?";
+//                query="update book set title=?,author=?,description=?,isbn=?,image=?,price=?,publish_date=?,last_update_time=? where user_id=?";
 //                ps=this.con.prepareStatement(query);
 //                
 //                ps.setString(1, u.getName());

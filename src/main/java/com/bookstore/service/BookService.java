@@ -127,59 +127,68 @@ public class BookService {
 // 
 //    
 ////    
-//    public void editCategory() throws ServletException,IOException{
-//        
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        
-//        Category getCategoryById = categoryDao.getCategoryById(id);
-////        userDao.findUserByEmail(email)
+    public void editBook() throws ServletException,IOException{
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        Book bookById = bookDao.getBookById(id);
+        List<Category> allCategory = categoryDao.getAllCategory();
+        System.out.println("all category in edit book"+allCategory);
+//        userDao.findUserByEmail(email)
 //        System.out.println(getCategoryById+" getCategoryById");
-//        request.setAttribute("category", getCategoryById);
-//        
-//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("category_form.jsp");
-//        requestDispatcher.forward(request, response);
-//            
-//    }
+        request.setAttribute("book", bookById);
+        request.setAttribute("allCategory", allCategory);
+        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("book_form.jsp");
+        requestDispatcher.forward(request, response);
+            
+    }
 ////
-//    public void updateCategory() throws ServletException,IOException{
-//            
-//            int id = Integer.parseInt(request.getParameter("id"));
-//            
-//            String name=request.getParameter("name");
-//            
-//            System.out.println(name);
-//        Category categoryById = categoryDao.getCategoryById(id);
-//        Category categoryByName = categoryDao.getCategoryByName(name);
-//            
-//        if(categoryByName!=null && categoryByName.getCat_id()!=categoryById.getCat_id())
-//            {
-//                System.out.println("could not update");
-//                String message="could not update "+name+" already exist";
-//                request.setAttribute("message", message);
-//                
-//                RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
-//                requestDispatcher.include(request, response);
-//                
-//            }
-//            else{
-//                Category category=new Category(id,name);
-//                int updateCategoryDetails = categoryDao.updateCategoryDetails(category);
-//
-//                if(updateCategoryDetails!=0)
-//                {
-//                    System.out.println("category updated");
-//                    String message="category updated successfully";
-//                    request.setAttribute("message", message);
-//                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
-//                    requestDispatcher.include(request, response);
-//                }
-//
-//                else
-//                    System.out.println("error on update");
-//                }
-//            
-//            
-//    }
+    public void updateBook() throws ServletException,IOException{
+            
+            int id = Integer.parseInt(request.getParameter("id"));
+            
+             String title = request.getParameter("title");
+            String author = request.getParameter("author");
+            String desc = request.getParameter("desc");
+            String isbn = request.getParameter("isbn");System.out.println("isbn"+isbn);
+            float price = Float.parseFloat(request.getParameter("price"));System.out.println("price"+price);
+
+            String name=request.getParameter("name");
+            
+            System.out.println(name);
+        Category categoryById = categoryDao.getCategoryById(id);
+        Category categoryByName = categoryDao.getCategoryByName(name);
+            
+        if(categoryByName!=null && categoryByName.getCat_id()!=categoryById.getCat_id())
+            {
+                System.out.println("could not update");
+                String message="could not update "+name+" already exist";
+                request.setAttribute("message", message);
+                
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+                requestDispatcher.include(request, response);
+                
+            }
+            else{
+                Category category=new Category(id,name);
+                int updateCategoryDetails = categoryDao.updateCategoryDetails(category);
+
+                if(updateCategoryDetails!=0)
+                {
+                    System.out.println("category updated");
+                    String message="category updated successfully";
+                    request.setAttribute("message", message);
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+                    requestDispatcher.include(request, response);
+                }
+
+                else
+                    System.out.println("error on update");
+                }
+            
+            
+    }
 ////
 //    public void removeCategory() throws IOException,ServletException{
 //        int id = Integer.parseInt(request.getParameter("id"));

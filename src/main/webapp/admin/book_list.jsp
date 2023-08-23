@@ -48,8 +48,8 @@
                         <tr>
                             <td>${status.index+1}</td>
                             <td>${book.b_id}</td>
-                            <td>
-                                <img src="data:image/jpg;base64,${book.base64Image}" alt="image" style="width: 20%"/>
+                            <td style="height: 150px;width: 50px">
+                                <img src="data:image/jpg;base64,${book.base64Image}" alt="image" style="width: 140px;"/>
                             </td>
                             <td>${book.b_title}</td>
                             <td>${book.author}</td>
@@ -57,7 +57,7 @@
                             <td>${book.price}</td>
                             <td>${book.lastUpdateTime}</td>
                             <td> 
-                                <a href="edit-user?id=${book.b_id}">Edit</a> &nbsp;&nbsp; 
+                                <a href="edit-book?id=${book.b_id}">Edit</a> &nbsp;&nbsp; 
                                 <a href="javascript:confirmDelete(${book.b_id})">Remove</a>
                             </td>
                         </tr>
@@ -70,10 +70,10 @@
         </div>
 
             <script>
-                function confirmDelete(userId) {
-                    if(confirm("are sure to delete: "+userId+"?"))
+                function confirmDelete(bookId) {
+                    if(confirm("are sure to delete: "+bookId+"?"))
                     {
-                        window.location='delete-user?id=' + userId;
+                        window.location='delete-book?id=' + bookId;
                     }
                 }
             </script>

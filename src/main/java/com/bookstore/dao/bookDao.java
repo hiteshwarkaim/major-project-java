@@ -204,24 +204,46 @@ public class BookDao {
 //
 //   
         
-//         public int updateBookDetails(Book book){
-//            int status=0;
-//            try {
-//                query="update book set title=?,author=?,description=?,isbn=?,image=?,price=?,publish_date=?,last_update_time=? where user_id=?";
-//                ps=this.con.prepareStatement(query);
-//                
-//                ps.setString(1, u.getName());
-//                ps.setString(2, u.getEmail());
-//                ps.setString(3, u.getPassword());
-//                ps.setInt(4,u.getId());
-//                status=ps.executeUpdate();
-//                
-//                
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            return status;
-//        }
+         public int updateBookDetails(Book book){
+            int status=0;
+            try {
+                query="update book set title=?,author=?,description=?,isbn=?,price=?,publish_date=?,last_update_time=?,category_id=? where book_id=?";
+                ps=this.con.prepareStatement(query);
+                
+                ps.setString(1, book.getB_title());
+                ps.setString(2, book.getAuthor());
+                ps.setString(3, book.getDesc());
+                ps.setString(4, book.getIsbn());
+                ps.setFloat(5, book.getPrice());
+                ps.setObject(6, book.getPublishDate());
+                ps.setObject(7, new Date());
+                
+                
+                
+                
+                //fetch category name by categori id
+                String query1="select * from category where category_name=?";
+                PreparedStatement ps1=this.con.prepareStatement(query1);
+                
+                ps1.setString(1, book.getCategory().getName());
+                ResultSet rs1=ps1.executeQuery();
+                Category category=null;
+
+                if(rs1.next()){
+                    category=new Category();
+                    int catid=rs1.getInt("category_id");
+                    category.setCat_id(catid);
+                }
+                ps.setInt(8, category.getCat_id());
+                ps.setInt(9, book.getB_id());
+                status=ps.executeUpdate();
+                
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return status;
+        }
 //         
 //         
 //         public int deleteUser(int id){

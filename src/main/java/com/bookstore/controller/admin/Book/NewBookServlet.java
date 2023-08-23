@@ -25,6 +25,7 @@ public class NewBookServlet extends HttpServlet {
             try {
                    BookService service =new BookService(request,response);
                  service.showBookForm();
+                 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

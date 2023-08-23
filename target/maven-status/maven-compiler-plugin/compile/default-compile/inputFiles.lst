@@ -17,6 +17,7 @@ C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\co
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\LogoutServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\entities\Book.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\service\BookService.java
+C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\Book\UpdateBookServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\frontend\HomeServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\service\UserService.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\dao\DB_Connection.java

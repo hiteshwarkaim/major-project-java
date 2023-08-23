@@ -31,6 +31,7 @@ public class CreateBookServlet extends HttpServlet {
             
             BookService service =new BookService(request,response);
             service.createBook();
+            service.listBooks();
            
             
         }

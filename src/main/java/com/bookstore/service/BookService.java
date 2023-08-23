@@ -43,7 +43,6 @@ public class BookService {
      public void listBooks() throws IOException,ServletException{
         List<Book> allBooks = bookDao.getAllBooks();
         request.setAttribute("allBooks", allBooks);
-        System.out.println(allBooks);
               
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("book_list.jsp");
         requestDispatcher.forward(request, response);
@@ -62,24 +61,16 @@ public class BookService {
              
     }   
     public void createBook() throws IOException,ServletException{
-        System.out.println("book service start");
         
         int catId = Integer.parseInt(request.getParameter("category"));
-//            int catId=11; System.out.println(catId);
-        String title = request.getParameter("title");System.out.println("title"+title);
-        String author = request.getParameter("author");System.out.println("author"+author);
-        String desc = request.getParameter("desc");System.out.println("desc"+desc);
-        String isbn = request.getParameter("isbn");System.out.println("isbn"+isbn);
-        float price = Float.parseFloat(request.getParameter("price"));System.out.println("price"+price);
+
+        String title = request.getParameter("title");
+        String author = request.getParameter("author");
+        String desc = request.getParameter("desc");
+        String isbn = request.getParameter("isbn");
+        float price = Float.parseFloat(request.getParameter("price"));
         
         
-        
-         System.out.println("catid"+catId);
-        System.out.println("title"+title);
-        System.out.println("author"+author);
-        System.out.println("desc"+desc);
-        System.out.println("isbn"+isbn);
-        System.out.println("price"+price);
         
         DateFormat dateFormat=new SimpleDateFormat("MM/dd/yyyy");
         Date publishdate=null;
@@ -90,7 +81,6 @@ public class BookService {
         }
         
        
-        System.out.println("publish date"+publishdate);
         
         Book newBook=new Book();
         newBook.setB_title(title);
@@ -116,10 +106,19 @@ public class BookService {
         
             newBook.setPic(imageBytes);
         }
+        
         int createdBook = bookDao.createBook(newBook);
         System.out.println("status of created book"+createdBook);
         if(createdBook!=0)
+        {
             System.out.println("created new book successfully");
+            
+            String message="New Book created successfully";
+            
+            request.setAttribute("message", message);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("book_list.jsp");
+            requestDispatcher.forward(request, response);
+        }
         else
             System.out.println("error in inserting book");
     }
@@ -133,7 +132,6 @@ public class BookService {
         
         Book bookById = bookDao.getBookById(id);
         List<Category> allCategory = categoryDao.getAllCategory();
-        System.out.println("all category in edit book"+allCategory);
 //        userDao.findUserByEmail(email)
 //        System.out.println(getCategoryById+" getCategoryById");
         request.setAttribute("book", bookById);
@@ -145,47 +143,105 @@ public class BookService {
     }
 ////
     public void updateBook() throws ServletException,IOException{
+            System.out.println("update book service");
+            int id = Integer.parseInt(request.getParameter("id")); 
             
-            int id = Integer.parseInt(request.getParameter("id"));
-            
-             String title = request.getParameter("title");
+             String title = request.getParameter("title"); 
             String author = request.getParameter("author");
             String desc = request.getParameter("desc");
-            String isbn = request.getParameter("isbn");System.out.println("isbn"+isbn);
-            float price = Float.parseFloat(request.getParameter("price"));System.out.println("price"+price);
+            String isbn = request.getParameter("isbn");
+            float price = Float.parseFloat(request.getParameter("price"));
 
-            String name=request.getParameter("name");
+        
+           DateFormat dateFormat=new SimpleDateFormat("MM/dd/yyyy");
+           Date publishdate=null;
+           try {
+               publishdate=dateFormat.parse(request.getParameter("publishdate"));
+           } catch (ParseException e) {
+               e.printStackTrace();
+           }
+
+            System.out.println("id:"+id);
+           
+           System.out.println("title:"+title);
+           System.out.println("author:"+author);
+           System.out.println("desc:"+desc);
+           System.out.println("isbn:"+isbn);
+           System.out.println("price:"+price);
+           System.out.println("publishdate:"+publishdate);
+          
+           Book book=new Book();
+           
+           book.setB_id(id);
+           book.setB_title(title);
+           book.setAuthor(author);
+           book.setDesc(desc);
+           book.setIsbn(isbn);
+           book.setPrice(price);
+           book.setPublishDate(publishdate);
+           
+           
+           int catId = Integer.parseInt(request.getParameter("category"));
+           
+           Category category = categoryDao.getCategoryById(catId);
+           book.setCategory(category);
+
+           System.out.println("reading data");
+           Part part=request.getPart("bookimage");
+           if(part!=null && part.getSize()>0){
+               long size=part.getSize();
+               byte[] imageBytes=new byte[(int)size];
+
+               InputStream inputStream=part.getInputStream();
+               inputStream.read(imageBytes);
+               inputStream.close();
+
+               book.setPic(imageBytes);
+           }
+
             
-            System.out.println(name);
-        Category categoryById = categoryDao.getCategoryById(id);
-        Category categoryByName = categoryDao.getCategoryByName(name);
+        int updateBookDetails = bookDao.updateBookDetails(book);
+        if(updateBookDetails!=0)
+        {
+            System.out.println("book updated");
             
-        if(categoryByName!=null && categoryByName.getCat_id()!=categoryById.getCat_id())
-            {
-                System.out.println("could not update");
-                String message="could not update "+name+" already exist";
-                request.setAttribute("message", message);
-                
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
-                requestDispatcher.include(request, response);
-                
-            }
-            else{
-                Category category=new Category(id,name);
-                int updateCategoryDetails = categoryDao.updateCategoryDetails(category);
-
-                if(updateCategoryDetails!=0)
-                {
-                    System.out.println("category updated");
-                    String message="category updated successfully";
-                    request.setAttribute("message", message);
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
-                    requestDispatcher.include(request, response);
-                }
-
-                else
-                    System.out.println("error on update");
-                }
+            String message="Book updated successfully";
+            request.setAttribute("message", message);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("book_list.jsp");
+            requestDispatcher.forward(request, response);
+        }
+        else{
+            System.out.println("book not updated");
+        }
+//        Category categoryById = categoryDao.getCategoryById(id);
+//        Category categoryByName = categoryDao.getCategoryByName(name);
+//            
+//        if(categoryByName!=null && categoryByName.getCat_id()!=categoryById.getCat_id())
+//            {
+//                System.out.println("could not update");
+//                String message="could not update "+name+" already exist";
+//                request.setAttribute("message", message);
+//                
+//                RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+//                requestDispatcher.include(request, response);
+//                
+//            }
+//            else{
+//                Category category=new Category(id,name);
+//                int updateCategoryDetails = categoryDao.updateCategoryDetails(category);
+//
+//                if(updateCategoryDetails!=0)
+//                {
+//                    System.out.println("category updated");
+//                    String message="category updated successfully";
+//                    request.setAttribute("message", message);
+//                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+//                    requestDispatcher.include(request, response);
+//                }
+//
+//                else
+//                    System.out.println("error on update");
+//                }
             
             
     }

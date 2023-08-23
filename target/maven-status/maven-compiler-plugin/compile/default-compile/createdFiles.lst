@@ -13,6 +13,7 @@ com\bookstore\entities\Review.class
 com\bookstore\controller\admin\category\ListCategoryServlet.class
 com\bookstore\controller\admin\user\UpdateUserServlet.class
 com\bookstore\controller\admin\AdminLoginFilter.class
+com\bookstore\controller\admin\Book\UpdateBookServlet.class
 com\bookstore\controller\admin\category\CreateCategoryServlet.class
 com\bookstore\controller\admin\user\ListUserServlet.class
 com\bookstore\controller\admin\category\UpdateCategoryServlet.class

@@ -9,21 +9,27 @@ import com.bookstore.service.BookService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "EditBookServlet", urlPatterns = {"/admin/edit-book"})
+@WebServlet(name = "UpdateBookServlet", urlPatterns = {"/admin/update-book"})
+@MultipartConfig(
+        fileSizeThreshold = 1024*1024*10,    //10kb
+        maxFileSize = 1024*1024*50,         //50mb
+        maxRequestSize = 1024*1024*100         //100MB
+    )
 public class UpdateBookServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
             BookService service =new BookService(request,response);
-            service.editBook();
+            service.updateBook();
         }
     }
 }

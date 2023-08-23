@@ -24,11 +24,11 @@
              
                     <div>
                         <c:if test="${book!=null}">
-                            <form action="update-boook" method="POST" >
+                            <form action="update-boook" method="get" >
                              <input type="hidden" name="id" value="${book.b_id}">
                         </c:if>
                         <c:if test="${book==null}">
-                            <form action="create-book" method="POST">
+                            <form action="create-book" method="POST" enctype="multipart/form-data">
                         </c:if>
                                 
                    

@@ -15,6 +15,7 @@ com\bookstore\controller\admin\AdminLoginFilter.class
 com\bookstore\controller\admin\category\CreateCategoryServlet.class
 com\bookstore\controller\admin\user\ListUserServlet.class
 com\bookstore\controller\admin\category\UpdateCategoryServlet.class
+com\bookstore\controller\admin\Book\NewBookServlet.class
 com\bookstore\dao\UserDao.class
 com\bookstore\controller\admin\RegisterServlet.class
 com\bookstore\controller\admin\user\EditUserServlet.class

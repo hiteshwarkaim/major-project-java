@@ -329,6 +329,41 @@ public class BookDao {
             }
             return booksList;
          }
+          
+           public List<Book> searchBook(String str){
+              List<Book> booksList=new ArrayList<>();
+             
+            try {
+                query="select * from book where title like concat('%',?,'%') or author like concat('%',?,'%') or description like concat('%',?,'%')";
+                ps=this.con.prepareStatement(query);
+                ps.setString(1,str);
+                ps.setString(2,str);
+                ps.setString(3,str);
+                
+                rs=ps.executeQuery();
+                while(rs.next())
+                {
+                    Book book=new Book();
+                    Category category=new Category();
+                    
+                    book.setB_id(rs.getInt("book_id"));
+                    book.setB_title(rs.getString("title"));
+                    book.setAuthor(rs.getString("author"));
+                    book.setDesc(rs.getString("description"));
+                    book.setIsbn(rs.getString("isbn"));
+                    book.setPic(rs.getBytes("image"));
+                    book.setPrice(rs.getFloat("price"));
+                    book.setPublishDate(rs.getDate("publish_date"));
+                    book.setLastUpdateTime(rs.getDate("last_update_time"));
+                   
+                    booksList.add(book);
+               }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return booksList;
+         }
          
 //         public boolean login(String email, String pass){
 //             User user=new User();

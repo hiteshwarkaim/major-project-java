@@ -20,6 +20,12 @@
                     <a href="#">Cart</a>
                 </nav>
             </div>
+            <div>
+                <form action="search">
+                    <input type="text" name="search">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
             
             <div>
                 <c:forEach var="category" items="${allCategory}" varStatus="status">

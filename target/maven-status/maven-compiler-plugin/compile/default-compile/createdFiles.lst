@@ -6,6 +6,7 @@ com\bookstore\entities\Category.class
 com\bookstore\dao\CategoryDao.class
 com\bookstore\dao\BookDao.class
 com\bookstore\controller\admin\AdminHomeServlet.class
+com\bookstore\frontend\SearchServlet.class
 com\bookstore\service\UserService.class
 com\bookstore\controller\admin\Book\EditBookServlet.class
 com\bookstore\frontend\ViewBookServlet.class

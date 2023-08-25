@@ -304,6 +304,30 @@ public class BookService {
         
     }
     
+    public void searchBook() throws IOException,ServletException{
+        String title = request.getParameter("search");
+        
+        List<Book> result = null; 
+        
+        if(title.equals("")){
+            result=bookDao.getAllBooks();
+            String message="Sorry no Result found!!!!!!";
+            request.setAttribute("message", message);
+            
+        }
+        else{
+            result=bookDao.searchBook(title);
+            
+        }
+        request.setAttribute("searchBook", result);
+        
+            
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/search.jsp");
+        requestDispatcher.forward(request, response);
+        
+    }
+    
+    
 //    public void listNewBooks() throws IOException,ServletException{
 ////        int id = Integer.parseInt(request.getParameter("id"));
 //        List<Book> lisNewBook = bookDao.listNewBook();

@@ -21,6 +21,7 @@
                     <h2>No result found for "${keyword}"</h2>
                 </c:if>
                 <c:if test="${fn:length(searchBook)>0}">
+                    <h2>Result found for "${keyword}"</h2>
                     <div style="width: 90%">
                         <table>
                              <c:forEach items="${searchBook}" var="book">

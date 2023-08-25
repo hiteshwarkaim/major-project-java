@@ -38,6 +38,15 @@
                             ${book.desc}
                         </td>
                     </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><h2>Customer Review</h2></td>
+                        <td colspan="2" align="center">
+                            <button>Write a Customer Review</button>
+                        </td>
+                    </tr>
                 </table>
             </div>
             

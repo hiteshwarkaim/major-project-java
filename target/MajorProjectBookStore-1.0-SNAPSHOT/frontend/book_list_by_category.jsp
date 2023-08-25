@@ -16,13 +16,13 @@
             <c:forEach items="${listBookByCategory}" var="book">
                 <div style="display: inline-block">
                     <div>
-                        <a href="view_book?id=${book.b_id}">
+                        <a href="view-book?id=${book.b_id}">
                             <img src="data:image/jpg;base64,${book.base64Image}" alt="image" style="width: 200px;margin: 15px;"/>
                         </a>
                     </div>
                     <div>
                         <strong>
-                            <a href="view_book?id=${book.b_id}">${book.b_title}</a>
+                            <a href="view-book?id=${book.b_id}">${book.b_title}</a>
                         </strong>
                     </div>
                     <div>Ratting *****</div>

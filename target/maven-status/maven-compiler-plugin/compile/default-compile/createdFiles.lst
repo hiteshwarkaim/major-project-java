@@ -22,7 +22,9 @@ com\bookstore\dao\UserDao.class
 com\bookstore\controller\admin\RegisterServlet.class
 com\bookstore\controller\admin\user\EditUserServlet.class
 com\bookstore\dao\DB_Connection.class
+com\bookstore\controller\admin\Book\DeleteBookServlet.class
 com\bookstore\controller\admin\category\DeleteCategoryServlet.class
+com\bookstore\frontend\ViewBookByCategoryServlet.class
 com\bookstore\controller\admin\LogoutServlet.class
 com\bookstore\controller\admin\user\DeleteUserServlet.class
 com\bookstore\frontend\HomeServlet.class

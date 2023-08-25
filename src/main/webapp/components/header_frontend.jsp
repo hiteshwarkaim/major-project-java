@@ -23,7 +23,7 @@
             
             <div>
                 <c:forEach var="category" items="${allCategory}" varStatus="status">
-                    <a href="">
+                    <a href="view-category?id=${category.cat_id}">
                         <strong style="font-size: 20px;"><c:out value="${category.name}"/></strong>
                     </a>
                     <c:if test="${not status.last}">

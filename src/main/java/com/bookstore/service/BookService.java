@@ -280,13 +280,40 @@ public class BookService {
         List<Book> listBookByCategory = bookDao.listBookByCategory(id);
         
         Category category = categoryDao.getCategoryById(id);
+        List<Category> allCategory = categoryDao.getAllCategory();
         
         request.setAttribute("listBookByCategory", listBookByCategory);
+        request.setAttribute("allCategory", allCategory);
         request.setAttribute("category", category);
             
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/book_list_by_category.jsp");
         requestDispatcher.forward(request, response);
     }
+    
+    public void bookDetails() throws IOException,ServletException{
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        Book book = bookDao.getBookById(id);
+        List<Category> allCategory = categoryDao.getAllCategory();
+        
+        request.setAttribute("book", book);
+        request.setAttribute("allCategory", allCategory);
+        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/book_detail.jsp");
+        requestDispatcher.forward(request, response);
+        
+    }
+    
+//    public void listNewBooks() throws IOException,ServletException{
+////        int id = Integer.parseInt(request.getParameter("id"));
+//        List<Book> lisNewBook = bookDao.listNewBook();
+//                
+//        request.setAttribute("lisNewBook", lisNewBook);
+//            
+//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/book_list_by_category.jsp");
+//        requestDispatcher.forward(request, response);
+//    }
+    
     
     
 }

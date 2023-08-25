@@ -20,9 +20,11 @@
                             <img src="data:image/jpg;base64,${book.base64Image}" alt="image" style="width: 200px;margin: 15px;"/>
                         </a>
                     </div>
-                    <div><strong>
+                    <div>
+                        <strong>
                             <a href="view_book?id=${book.b_id}">${book.b_title}</a>
-                        </strong></div>
+                        </strong>
+                    </div>
                     <div>Ratting *****</div>
                     <div>by ${book.author}</div>
                     <div>Rs. ${book.price}</div>

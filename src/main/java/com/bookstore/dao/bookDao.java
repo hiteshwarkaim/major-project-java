@@ -298,6 +298,38 @@ public class BookDao {
             return booksList;
          }
          
+          public List<Book> listNewBook(){
+              List<Book> booksList=new ArrayList<>();
+             
+            try {
+                query="select * from book order by publish_date desc";
+                ps=this.con.prepareStatement(query);
+//                ps.setInt(1,categoryId);
+                rs=ps.executeQuery();
+                while(rs.next())
+                {
+                    Book book=new Book();
+                    Category category=new Category();
+                    
+                    book.setB_id(rs.getInt("book_id"));
+                    book.setB_title(rs.getString("title"));
+                    book.setAuthor(rs.getString("author"));
+                    book.setDesc(rs.getString("description"));
+                    book.setIsbn(rs.getString("isbn"));
+                    book.setPic(rs.getBytes("image"));
+                    book.setPrice(rs.getFloat("price"));
+                    book.setPublishDate(rs.getDate("publish_date"));
+                    book.setLastUpdateTime(rs.getDate("last_update_time"));
+                   
+                    booksList.add(book);
+               }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return booksList;
+         }
+         
 //         public boolean login(String email, String pass){
 //             User user=new User();
 //            try {
@@ -321,6 +353,7 @@ public class BookDao {
 //            return false;
 //         }
 
+   
     
 
 }

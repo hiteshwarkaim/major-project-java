@@ -5,8 +5,10 @@
  */
 package com.bookstore.frontend;
 
+import com.bookstore.dao.BookDao;
 import com.bookstore.dao.CategoryDao;
 import com.bookstore.dao.DB_Connection;
+import com.bookstore.entities.Book;
 import com.bookstore.entities.Category;
 import java.io.IOException;
 import java.util.List;
@@ -25,9 +27,19 @@ public class HomeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
      
         CategoryDao categoryDao=new CategoryDao(DB_Connection.getConnection());
+        BookDao bookDao=new BookDao(DB_Connection.getConnection());
+        
         List<Category> allCategory = categoryDao.getAllCategory();
+        List<Book> listNewBook = bookDao.listNewBook();
+        
+//        BookService service=new BookService(request,response);
+//        service.listBooks();
+//        service.listNewBooks();
         
         request.setAttribute("allCategory", allCategory);
+        request.setAttribute("listNewBook", listNewBook);
+        
+        System.out.println("listNewBook"+listNewBook);
         
         RequestDispatcher rd = request.getRequestDispatcher("frontend/index.jsp");
         rd.forward(request, response);

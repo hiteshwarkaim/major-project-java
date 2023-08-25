@@ -305,22 +305,22 @@ public class BookService {
     }
     
     public void searchBook() throws IOException,ServletException{
-        String title = request.getParameter("search");
+        String keyword = request.getParameter("search");
         
         List<Book> result = null; 
         
-        if(title.equals("")){
+        if(keyword.equals("")){
             result=bookDao.getAllBooks();
             String message="Sorry no Result found!!!!!!";
             request.setAttribute("message", message);
             
         }
         else{
-            result=bookDao.searchBook(title);
+            result=bookDao.searchBook(keyword);
             
         }
         request.setAttribute("searchBook", result);
-        
+        request.setAttribute("keyword", keyword);
             
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/search.jsp");
         requestDispatcher.forward(request, response);

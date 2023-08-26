@@ -6,12 +6,14 @@ C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\co
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\service\CategoryService.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\entities\Review.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\category\ListCategoryServlet.java
+C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\dao\CustomerDao.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\Book\DeleteBookServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\dao\CategoryDao.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\AdminHomeServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\frontend\ViewBookByCategoryServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\entities\OrderDetail.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\RegisterServlet.java
+C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\entities\Customer.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\category\UpdateCategoryServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\user\UpdateUserServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\dao\UserDao.java
@@ -21,6 +23,7 @@ C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\co
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\service\BookService.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\Book\UpdateBookServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\frontend\HomeServlet.java
+C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\service\CustomerService.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\service\UserService.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\dao\DB_Connection.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\entities\User.java
@@ -33,4 +36,5 @@ C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\co
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\frontend\ViewBookServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\AdminLoginFilter.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\Book\NewBookServlet.java
+C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\category\ListCustomerServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\dao\BookDao.java

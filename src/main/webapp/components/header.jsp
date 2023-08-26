@@ -32,7 +32,7 @@
                         </a> | &nbsp;
                     </div>
                     <div>
-                        <a href="#">
+                        <a href="list-customers">
                             <img src="../static/images/customer.png" alt="alt" width="70" height="70"/><br> Customers
                         </a> | &nbsp;
                      </div>

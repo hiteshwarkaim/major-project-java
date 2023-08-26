@@ -17,35 +17,36 @@
                 <h4 class="message">${message}</h4>
             </c:if>
                 
-                <c:if test="${fn:length(searchBook)==0 }">
-                    <h2>No result found for "${keyword}"</h2>
-                </c:if>
-                <c:if test="${fn:length(searchBook)>0}">
-                    <h2>Result found for "${keyword}"</h2>
-                    <div style="width: 90%">
-                        <table>
-                             <c:forEach items="${searchBook}" var="book">
-                            <tr>
-                                <td>
-                                    <a href="view-book?id=${book.b_id}">
-                                        <img src="data:image/jpg;base64,${book.base64Image}" alt="image" style="width: 200px;margin: 15px;"/>
-                                    </a>    
-                                </td>
-                                <td>
-                                    <strong>
-                                        <a href="view-book?id=${book.b_id}">${book.b_title}</a>
-                                    </strong>
-                                </td>
-                                <td>Ratting *****</td>
-                                <td>by ${book.author}</td>
-                                <td>Rs. ${book.price}</td>
-                                <td><button>Add to Cart</button></td>
+            <c:if test="${fn:length(searchBook)==0 }">
+                <h2>No result found for "${keyword}"</h2>
+            </c:if>
+            <c:if test="${fn:length(searchBook)>0}">
+                <h2>Result found for "${keyword}"</h2>
+                <div>
+                    <table>
+                         <c:forEach items="${searchBook}" var="book">
+                             <tr style="border: 2px solid black;border-radius: 50px">
+                            <td>
+                                <a href="view-book?id=${book.b_id}">
+                                    <img src="data:image/jpg;base64,${book.base64Image}" alt="image" style="width: 200px;margin: 15px;"/>
+                                </a>    
+                            </td>
+                            <td>
+                                <strong>
+                                    <a href="view-book?id=${book.b_id}">${book.b_title}</a>
+                                </strong>
+                            </td>
+                            <td>Ratting *****</td>
+                            <td>by ${book.author}</td>
+                            <td>${fn:substring(book.desc,0,100)}...</td>
+                            <td>Rs. ${book.price}</td>
+                            <td><button>Add to Cart</button></td>
 
                             </tr>
-                            </c:forEach>
-                        </table>
-                     </div>
-                </c:if>
+                        </c:forEach>
+                    </table>
+                 </div>
+            </c:if>
                 
             
             

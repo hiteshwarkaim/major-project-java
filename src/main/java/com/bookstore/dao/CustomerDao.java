@@ -28,18 +28,27 @@ public class CustomerDao {
         this.con=con;
     }
     
-    public int createUser(User user){
+    public int createCustomer(Customer customer){
          int status=0;
         try {
            
-            query="insert into users(full_name,email,password) values(?,?,?)";
+            query="insert into customer(email,fullname,address,city,country,phone,zipcode,password,register_date) values(?,?,?,?,?,?,?,?,?)";
             ps=this.con.prepareStatement(query);
             
-            ps.setString(1, user.getName());
-            ps.setString(2, user.getEmail());
-            ps.setString(3, user.getPassword());
+            System.out.println(customer.getEmail()+" "+customer.getFullName()+" "+customer.getRegister());
+            
+            ps.setString(1, customer.getEmail());
+            ps.setString(2, customer.getFullName());
+            ps.setString(3, customer.getAddress());
+            ps.setString(4, customer.getCity());
+            ps.setString(5, customer.getCountry());
+            ps.setString(6, customer.getPhone());
+            ps.setString(7, customer.getZipcode());
+            ps.setString(8, customer.getPassword());
+            ps.setObject(9, customer.getRegister());
+            
             status = ps.executeUpdate();
-            System.out.println(status);
+          
              
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,63 +87,84 @@ public class CustomerDao {
         return customersList;
     }
     
-    public User getUserByEmail(String email){
-        User user=null;
+    public Customer getCustomerByEmail(String email){
+        Customer customer=null;
         try {
-            query="select * from users where email=?";
+            query="select * from customer where email=?";
             ps=this.con.prepareStatement(query);
             ps.setString(1, email);
             rs = ps.executeQuery();
             
              while(rs.next()){
-                user=new User();
-                user.setId(rs.getInt("user_id"));
-                user.setName(rs.getString("full_name"));
-                user.setEmail(rs.getString("email"));
+                customer=new Customer();
+                
+                 customer.setCust_id(rs.getInt("customer_id"));
+                 customer.setEmail(rs.getString("email"));
+                 customer.setFullName(rs.getString("fullname"));
+                 customer.setAddress(rs.getString("address"));
+                 customer.setCity(rs.getString("city"));
+                 customer.setCountry(rs.getString("country"));
+                 customer.setPhone(rs.getString("phone"));
+                 customer.setZipcode(rs.getString("zipcode"));
+                 customer.setPassword(rs.getString("password"));
+                 customer.setRegister(rs.getDate("register_date"));
                 
             }
            
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return  user;
+        return  customer;
     }
     
-        public User getUserById(int id){
-            User user=new User();
+        public Customer getCustomerById(int id){
+            Customer customer=new Customer();
             try {
-                query="select * from users where user_id=?";
+                query="select * from customer where customer_id=?";
                 ps=this.con.prepareStatement(query);
                 ps.setInt(1,id);
                 rs=ps.executeQuery();
                 while(rs.next())
                 {
-                    user.setId(rs.getInt("user_id"));
-                    user.setName(rs.getString("full_name"));
-                    user.setEmail(rs.getString("email"));
-                    user.setPassword(rs.getString("password"));
+                 customer.setCust_id(rs.getInt("customer_id"));
+                 customer.setEmail(rs.getString("email"));
+                 customer.setFullName(rs.getString("fullname"));
+                 customer.setAddress(rs.getString("address"));
+                 customer.setCity(rs.getString("city"));
+                 customer.setCountry(rs.getString("country"));
+                 customer.setPhone(rs.getString("phone"));
+                 customer.setZipcode(rs.getString("zipcode"));
+                 customer.setPassword(rs.getString("password"));
+                 customer.setRegister(rs.getDate("register_date"));
                     
-                    return user;
+                    return customer;
                 }
                 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return user;
+            return customer;
         }
 
    
         
-         public int updateUserDetails(User u){
+         public int updateCustomerDetails(Customer customer){
             int status=0;
             try {
-                query="update users set full_name=?, email=?, password=? where user_id=?";
+                query="update customer set email=?, fullname=?, address=?,city=?,country=?,phone=?,zipcode=?,password=?,register_date=? where customer_id=?";
                 ps=this.con.prepareStatement(query);
                 
-                ps.setString(1, u.getName());
-                ps.setString(2, u.getEmail());
-                ps.setString(3, u.getPassword());
-                ps.setInt(4,u.getId());
+                ps.setString(1, customer.getEmail());
+                ps.setString(2, customer.getFullName());
+                ps.setString(3, customer.getAddress());
+                ps.setString(4, customer.getCity());
+                ps.setString(5, customer.getCountry());
+                ps.setString(6, customer.getPhone());
+                ps.setString(7, customer.getZipcode());
+                ps.setString(8, customer.getPassword());
+                ps.setObject(9, customer.getRegister());
+                ps.setInt(10, customer.getCust_id());
+                
                 status=ps.executeUpdate();
                 
                 
@@ -148,7 +178,7 @@ public class CustomerDao {
          public int deleteUser(int id){
              int status=0;
              try {
-                 query="delete from users where user_id=?";
+                 query="delete from customer where customer_id=?";
                 ps=this.con.prepareStatement(query);
                 ps.setInt(1, id);
                 status = ps.executeUpdate();

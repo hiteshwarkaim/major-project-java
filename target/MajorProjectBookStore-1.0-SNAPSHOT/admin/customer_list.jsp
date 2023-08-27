@@ -20,7 +20,7 @@
             
             <div>
                  <h1 class="pageheading">Customer management</h1>    
-                 <a href="register.jsp">Create new customer</a>
+                 <a href="customer_form.jsp">Create new customer</a>
             </div> 
             <c:if test="${message!=null}">
                 <h4 class="message">${message}</h4>
@@ -56,7 +56,7 @@
                             <td>${customer.zipcode}</td>
                             <td>${customer.register}</td>
                             <td> 
-                                <a href="edit-user?id=${customer.cust_id}">Edit</a> &nbsp;&nbsp; 
+                                <a href="edit-customer?id=${customer.cust_id}">Edit</a> &nbsp;&nbsp; 
                                 <a href="javascript:confirmDelete(${customer.cust_id})">Remove</a>
                             </td>
                         </tr>
@@ -69,10 +69,10 @@
         </div>
 
             <script>
-                function confirmDelete(userId) {
-                    if(confirm("are sure to delete: "+userId+"?"))
+                function confirmDelete(custId) {
+                    if(confirm("are sure to delete: "+custId+"?"))
                     {
-                        window.location='delete-user?id=' + userId;
+                        window.location='delete-customer?id=' + custId;
                     }
                 }
             </script>

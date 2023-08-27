@@ -94,8 +94,9 @@ public class Customer {
         this.register = register;
     }
 
-    public Customer(int cust_id, String email, String fullName, String address, String city, String country, String phone, String zipcode, String password, Date register) {
-        this.cust_id = cust_id;
+  
+
+    public Customer(String email, String fullName, String address, String city, String country, String phone, String zipcode, String password, Date register) {
         this.email = email;
         this.fullName = fullName;
         this.address = address;
@@ -106,7 +107,7 @@ public class Customer {
         this.password = password;
         this.register = register;
     }
-
+    
     public Customer() {
     }
 

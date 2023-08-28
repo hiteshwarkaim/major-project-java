@@ -68,12 +68,69 @@ public class CustomerService {
                 //if email is not already exist, then insert the data
                 newCustomer=new Customer(email, fullname, address, city, country, phone, zipcode,pwd1, register);
                 status = customerDao.createCustomer(newCustomer);
-                System.out.println("status "+status);
-                    if(status !=0 ){
+                
+                if(status !=0 ){
                         System.out.println("inserted data");
-                        String message="User is created successfully"+newCustomer.getFullName();
+                        String message="customer is created successfully"+newCustomer.getFullName();
                         request.setAttribute("message", message);
                         RequestDispatcher rd=request.getRequestDispatcher("message.jsp");
+                        rd.include(request, response);
+                        
+                        
+                    }
+                    else
+                    {
+                        System.out.println("error");
+                        String message="error aa gai";
+                        request.setAttribute("message", message);
+                        RequestDispatcher rd=request.getRequestDispatcher("/error/error.jsp");
+                        rd.include(request, response);
+                    }
+            }
+             
+    } 
+    
+    
+    public void createCustomer() throws ServletException,IOException{
+        
+            int status=0;
+            Customer newCustomer=null;
+            
+            String email=request.getParameter("email");
+            String fullname=request.getParameter("fullname");
+            String pwd1=request.getParameter("pwd1");
+            String pwd2=request.getParameter("pwd2");
+            String phone=request.getParameter("phone");
+            String address=request.getParameter("address");
+            String city=request.getParameter("city");
+            String zipcode=request.getParameter("zipcode");
+            String country=request.getParameter("country");
+            Date register=new Date();
+            
+        //fetch  the user with this email
+        Customer customerByEmail = customerDao.getCustomerByEmail(email);
+            
+            //check email is already exist or not
+            if(customerByEmail!=null){
+                System.out.println("exist krti hai ye");
+                
+                String message="email already exist"+email;
+                request.setAttribute("message", message);
+                
+                RequestDispatcher rd=request.getRequestDispatcher("/frontend/message.jsp");
+                rd.include(request, response);
+            }
+            else{
+                
+                //if email is not already exist, then insert the data
+                newCustomer=new Customer(email, fullname, address, city, country, phone, zipcode,pwd1, register);
+                status = customerDao.createCustomer(newCustomer);
+                
+                if(status !=0 ){
+                        System.out.println("inserted data");
+                        String message="New customer is created"+newCustomer.getFullName();
+                        request.setAttribute("message", message);
+                        RequestDispatcher rd=request.getRequestDispatcher("/frontend/message.jsp");
                         rd.include(request, response);
                         
                         
@@ -195,29 +252,29 @@ public class CustomerService {
         }
     }
 //    
-//    public void userLogin() throws IOException,ServletException{
-//        String email = request.getParameter("email");
-//        String pass = request.getParameter("password");
-//        
-//        boolean loginStatus = userDao.login(email,pass);
-//        
-//        if(loginStatus)
-//        {
-//            System.out.println("user login success");
-//            request.getSession().setAttribute("userEmail", email);
-//            
-//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin/");
-//            requestDispatcher.include(request, response);
-//            
-//        }
-//        else
-//        {
-//            System.out.println("not login");
-//            String message="login failed";
-//            request.setAttribute("message", message);
-//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-//            requestDispatcher.include(request, response);
-//        }
-//            
-//    }
+    public void customerLogin() throws IOException,ServletException{
+        String email = request.getParameter("email");
+        String pass = request.getParameter("password");
+        
+        boolean loginStatus = customerDao.login(email,pass);
+        
+        if(loginStatus)
+        {
+            System.out.println("customer login success");
+            request.getSession().setAttribute("customerEmail", email);
+            
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+            requestDispatcher.include(request, response);
+            
+        }
+        else
+        {
+            System.out.println("not login");
+            String message="login failed";
+            request.setAttribute("message", message);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/login.jsp");
+            requestDispatcher.include(request, response);
+        }
+            
+    }
 }

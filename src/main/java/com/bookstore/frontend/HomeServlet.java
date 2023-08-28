@@ -32,14 +32,9 @@ public class HomeServlet extends HttpServlet {
         List<Category> allCategory = categoryDao.getAllCategory();
         List<Book> listNewBook = bookDao.listNewBook();
         
-//        BookService service=new BookService(request,response);
-//        service.listBooks();
-//        service.listNewBooks();
-        
         request.setAttribute("allCategory", allCategory);
         request.setAttribute("listNewBook", listNewBook);
         
-        System.out.println("listNewBook"+listNewBook);
         
         RequestDispatcher rd = request.getRequestDispatcher("frontend/index.jsp");
         rd.forward(request, response);

@@ -6,7 +6,6 @@
 package com.bookstore.dao;
 
 import com.bookstore.entities.Customer;
-import com.bookstore.entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -189,19 +188,19 @@ public class CustomerDao {
          }
          
          public boolean login(String email, String pass){
-             User user=new User();
+             Customer customer=new Customer();
             try {
-                query="select * from users where email=? and password=?";
+                query="select * from customer where email=? and password=?";
                 ps=this.con.prepareStatement(query);
                 ps.setString(1,email);
                 ps.setString(2,pass);
                 rs=ps.executeQuery();
                 if(rs.next())
                 {
-                    user.setId(rs.getInt("user_id"));
-                    user.setName(rs.getString("full_name"));
-                    user.setEmail(rs.getString("email"));
-                    user.setPassword(rs.getString("password"));
+                    customer.setCust_id(rs.getInt("customer_id"));
+                    customer.setFullName(rs.getString("fullname"));
+                    customer.setEmail(rs.getString("email"));
+                    customer.setPassword(rs.getString("password"));
                     return  true;
                 }
                 

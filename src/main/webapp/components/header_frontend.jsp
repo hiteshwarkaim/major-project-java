@@ -15,9 +15,10 @@
             </div>
             <div>
                 <nav>
-                    <a href="#">Register</a> | &nbsp;
-                    <a href="#">Signin</a> |&nbsp;
-                    <a href="#">Cart</a>
+                    <a href="register-customer">Register</a> | &nbsp;
+                    <a href="login-customer">Signin</a> |&nbsp;
+                    <a href="#">Order</a>|&nbsp;
+                    <a href="view-cart">Cart</a>
                 </nav>
             </div>
             <div>

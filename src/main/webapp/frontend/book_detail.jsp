@@ -29,7 +29,7 @@
                         <td rowspan="2" valign="top" width="20%">
                             Rs. ${book.price}
                             <br>
-                            <button type="submit">Add to Cart</button>
+                            <button id="buttonAddToCart">Add to Cart</button>
                         </td>
                         
                     </tr>
@@ -56,5 +56,14 @@
             <%@include file="/components/footer.jsp" %>
 
         </div>
+            
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#buttonAddToCart').click(function(){
+                        window.location='add_to_cart?book_id='+${book.b_id}; 
+                    })
+                   
+                });
+            </script>
     </body>
 </html>

@@ -27,7 +27,7 @@
                 <c:if test="${cart.totalItems>0}">
                     <div>
                         <form>
-                            <table width="1200"style="border: 1px solid black;">
+                            <table width="1200" style="border: 1px solid black;">
                                 <tr>
                                     <th>No</th>
                                     <th>Book</th>

@@ -51,7 +51,7 @@
                                     <td>Rs. ${item.key.price}</td>
                                     <td>Rs. ${item.value * item.key.price}</td>
                                     <td>
-                                        <a href="">Remove</a>
+                                        <a href="remove_from_cart?book_id=${item.key.b_id}">Remove</a>
                                     </td>
                                 </tr>
                                 </c:forEach>

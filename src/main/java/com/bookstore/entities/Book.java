@@ -136,6 +136,9 @@ public class Book implements Serializable{
         this.category=category;
     }
 
+    public Book(int b_id) {
+        this.b_id=b_id;
+    }
     public Book() {
     }
     

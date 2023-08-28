@@ -42,6 +42,7 @@ C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\co
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\Book\EditBookServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\Book\ListBookServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\Book\CreateBookServlet.java
+C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\frontend\customer\RemoveBookFromCartServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\Book\NewBookServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\category\ListCustomerServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\dao\BookDao.java

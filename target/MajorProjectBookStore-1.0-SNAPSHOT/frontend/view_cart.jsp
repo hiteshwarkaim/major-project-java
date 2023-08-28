@@ -27,7 +27,7 @@
                 <c:if test="${cart.totalItems>0}">
                     <div>
                         <form>
-                            <table>
+                            <table width="1200"style="border: 1px solid black;">
                                 <tr>
                                     <th>No</th>
                                     <th>Book</th>
@@ -42,15 +42,19 @@
                                 <c:forEach var="item" items="${cart.items}" varStatus="status">
                                     
                                 <tr>
-                                    <th>${status.index+1}</th>
-                                    <th>${item.key.author}</th>
-                                    <th>${item.value}</th>
-                                    <th>Rs. ${item.key.price}</th>
-                                    <th>Rs. ${item.value * item.key.price}</th>
-                                    <th>
+                                    <td>${status.index+1}</td>
+                                    <td>
+                                        <img src="data:image/jpg;base64,${item.key.base64Image}" alt="image" style="width: 100px;"/>
+                                        &nbsp;&nbsp;
+                                        ${item.key.author}</td>
+                                    <td>${item.value}</td>
+                                    <td>Rs. ${item.key.price}</td>
+                                    <td>Rs. ${item.value * item.key.price}</td>
+                                    <td>
                                         <a href="">Remove</a>
-                                    </th>
+                                    </td>
                                 </tr>
+                                </c:forEach>
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -59,7 +63,7 @@
                                     <td rowspan="2">${cart.totalAmount}</td>
                                 </tr>
                                 
-                                </c:forEach>
+                                
                             </table>
                         </form>
                     </div>

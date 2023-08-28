@@ -5,6 +5,8 @@
  */
 package com.bookstore.frontend.shopingcart;
 
+import com.bookstore.dao.BookDao;
+import com.bookstore.dao.DB_Connection;
 import com.bookstore.entities.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,17 +30,23 @@ public class ViewCartServlet extends HttpServlet {
             if(cartobject==null){
                 ShoppingCart shopingCart=new ShoppingCart();
                 request.getSession().setAttribute("cart", shopingCart);
-            }
+                
+                BookDao bookDao=new BookDao(DB_Connection.getConnection());
             
             Book book=new Book();
-            book.setAuthor("elvish");
-            book.setPrice(20);
+            Book book1 = bookDao.getBookById(4);
+            Book book2 = bookDao.getBookById(5);
+            Book book3 = bookDao.getBookById(7);
             
-            System.out.println("added cart");
-            ShoppingCart shopingCart =(ShoppingCart) request.getSession().getAttribute("cart");
-            shopingCart.addItem(book);
+//            ShoppingCart shopingCart =(ShoppingCart) request.getSession().getAttribute("cart");
+            shopingCart.addItem(book1);
+            shopingCart.addItem(book2);
+            shopingCart.addItem(book3);
+            }
             
-            System.out.println("end cart");
+            
+            
+            
              RequestDispatcher rd=request.getRequestDispatcher("frontend/view_cart.jsp");
              rd.forward(request, response);
             

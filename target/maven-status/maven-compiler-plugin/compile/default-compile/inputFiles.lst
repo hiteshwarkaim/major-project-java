@@ -20,6 +20,7 @@ C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\co
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\service\UserService.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\dao\DB_Connection.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\entities\User.java
+C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\frontend\customer\UpdateCartServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\frontend\SearchServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\user\EditUserServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\MajorProjectBookStore\src\main\java\com\bookstore\controller\admin\user\ListUserServlet.java

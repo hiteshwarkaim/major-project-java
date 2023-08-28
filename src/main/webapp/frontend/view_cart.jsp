@@ -26,12 +26,13 @@
                 </c:if>
                 <c:if test="${cart.totalItems>0}">
                     <div>
-                        <form>
+                        <form action="update_cart" method="post">
+                            <div>
                             <table width="1200" style="border: 1px solid black;">
                                 <tr>
                                     <th>No</th>
                                     <th>Book</th>
-                                    <th>Quantity</th>
+                                    <th>Quan tity</th>
                                     <th>Price</th>
                                     <th>Subtotal</th>
                                     <th>
@@ -47,7 +48,9 @@
                                         <img src="data:image/jpg;base64,${item.key.base64Image}" alt="image" style="width: 100px;"/>
                                         &nbsp;&nbsp;
                                         ${item.key.author}</td>
-                                    <td>${item.value}</td>
+                                    <td>
+                                        <input type="hidden" name="bookId" value="${item.key.b_id}"/>
+                                        <input type="text" name="quantity" value="${item.value}" size="3"/>  </td>
                                     <td>Rs. ${item.key.price}</td>
                                     <td>Rs. ${item.value * item.key.price}</td>
                                     <td>
@@ -65,8 +68,21 @@
                                 
                                 
                             </table>
+                             </div>
+                                
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td></td>
+                                            <td><button type="submit">Update</button></td>
+                                            <td><a href="${pageContext.request.contextPath}/">Continue Shopping</a></td>
+                                            <td><a href="url">Checkout</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
                         </form>
                     </div>
+                         
                 </c:if>
                 
                
